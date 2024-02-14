@@ -7,7 +7,7 @@ import { CreateRecordComponent } from './create-record/create-record.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { MaterialModule } from './material/material.module';
+import { MaterialModule } from './material/material.module';
 // import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 // import {MatToolbarModule} from '@angular/material/toolbar';
 // import {MatIconModule} from '@angular/material/icon';
@@ -23,30 +23,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
+    DisplayDataComponent,
+    CreateRecordComponent
     
   ],
   imports: [
-    DisplayDataComponent,
-
+    MaterialModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    CreateRecordComponent,
     BrowserAnimationsModule,
-  //   MatSlideToggleModule,
-  // MatButtonModule,
-  // MatToolbarModule,
-  // MatIconModule,
-  // MatSidenavModule,
-  // MatTableModule,
-  // MatDialog,
-
-  // MatFormFieldModule,
-  // MatDialogModule,
-
-  // MatCheckboxModule,
-  // MatRadioModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

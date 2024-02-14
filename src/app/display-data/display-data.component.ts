@@ -67,7 +67,7 @@ status:true
 ];
 
 @Component({
-  standalone:true,
+  // standalone:true,
   selector: 'app-display-data',
   templateUrl: './display-data.component.html',
   styleUrls: ['./display-data.component.css'],
