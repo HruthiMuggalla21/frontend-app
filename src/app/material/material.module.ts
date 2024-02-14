@@ -7,7 +7,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTableModule} from '@angular/material/table';
 
 import {MatFormFieldModule} from '@angular/material/form-field'
-import {MatDialog,MAT_DIALOG_DATA,MatDialogTitle,MatDialogContent} from '@angular/material/dialog'
+import {MatDialogModule} from '@angular/material/dialog'
+// import {MatDialog,MAT_DIALOG_DATA,MatDialogTitle,MatDialogContent} from '@angular/material/dialog'
 import {MatButtonModule} from '@angular/material/button'
 import {MatCheckboxModule} from '@angular/material/checkbox'
 import {MatRadioModule} from '@angular/material/radio';
@@ -15,6 +16,7 @@ import { MatTableDataSource } from '@angular/material/table';
 
 
 const MaterialComponents = [
+  CommonModule,
   MatSlideToggleModule,
   MatButtonModule,
   MatToolbarModule,
@@ -23,23 +25,23 @@ const MaterialComponents = [
   MatTableModule,
   
   MatFormFieldModule,
-  MatDialog,
-  MAT_DIALOG_DATA,
-  MatDialogTitle,
-  MatDialogContent,
+  MatDialogModule,
+  // MatDialog,
+  // MAT_DIALOG_DATA,
+  // MatDialogTitle,
+  // MatDialogContent,
   MatCheckboxModule,
   MatRadioModule,
-  MatTableDataSource
+  // MatTableDataSource
 ]
 
 
 
 @NgModule({
-  declarations: [MaterialComponents],
-  exports: [MaterialComponents],
   imports: [
-    CommonModule    
+    [MaterialComponents]   
   ],
+  exports: [MaterialComponents],
   
 })
 export class MaterialModule { }
