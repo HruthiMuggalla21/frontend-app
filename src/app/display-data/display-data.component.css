@@ -1,0 +1,31 @@
+table{
+    width: 100%;
+}
+
+.class1{
+    color: green;
+    transform: scale(0.7);
+    vertical-align: middle;
+}
+.class2{
+    color: red;
+    transform: scale(0.7);
+    vertical-align: middle;
+}
+
+.header{
+    display: flex;
+    flex-direction:row-reverse;
+}
+
+button {
+    flex: 0 0 auto;
+    margin-left: 10px; /* Add space between the buttons */
+    background-color: aqua;
+    
+  }
+
+  input.mat-raised-button.mat-primary{
+    background-color: black;
+    color: white;
+}
