@@ -1,73 +1,15 @@
 
-import { Component,ViewChild,OnInit, AfterViewInit} from '@angular/core';
+import { Component,ViewChild,OnInit} from '@angular/core';
 import { Elements } from '../elements';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
 import { CreateRecordComponent } from '../create-record/create-record.component';
+import { ApiService } from '../api.service';
 
 // import { MaterialModule } from '../material/material.module';
 
-const ELEMENT_DATA: Elements[] = [
-
-{ sensor: 'A',
-   desc:"Reformer",
-  unit: 'Gcal/hr',
-  optimization:false,
-  current_value:133.6,
-  optimised_value:0,
-  operator_low:151,
-  operator_high:152,
-  status:false
-},
-
-{ sensor: 'B',
-desc:"Pressuer",
-unit: 'Gcal/hr',
-optimization:true,
-current_value:110,
-optimised_value:1,
-operator_low:104,
-operator_high:200,
-status:true
-},
-
-{ sensor: 'C',
-desc:"Pressuer",
-unit: 'Gcal/hr',
-optimization:true,
-current_value:110,
-optimised_value:1,
-operator_low:104,
-operator_high:200,
-status:true
-},
-
-{ sensor: 'D',
-desc:"Pressuer",
-unit: 'Gcal/hr',
-optimization:true,
-current_value:110,
-optimised_value:1,
-operator_low:104,
-operator_high:200,
-status:true
-},
-
-{ sensor: 'E',
-desc:"Pressuer",
-unit: 'Gcal/hr',
-optimization:true,
-current_value:110,
-optimised_value:1,
-operator_low:104,
-operator_high:200,
-status:true
-},
-
-
-];
 
 @Component({
   // standalone:true,
@@ -82,25 +24,28 @@ export class DisplayDataComponent implements OnInit {
   title = 'materialApp';
   @ViewChild(MatPaginator) paginator!:MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  // @ViewChild('createDialogTemplate') set createDialogTemplate(value: TemplateRef<any>){
-  //   if (value){
-  //     this.dialogTemplate = value;
-  //   }
-  // }
-  // dialogTemplate!: TemplateRef<any>;
   
-  constructor(private dialog: MatDialog){}
-  ngOnInit(): void{
-  this.dataSource.sort=this.sort;
-  this.dataSource.paginator=this.paginator;
+  constructor(private dialog: MatDialog, private apiService: ApiService){}
 
-  
-}
+  dataSource: MatTableDataSource<Elements>=new MatTableDataSource<Elements>();
+
+  ngOnInit(): void{
+  this.apiService.getData().subscribe((dataFrom: Elements[]) => {
+    this.dataSource=new MatTableDataSource<Elements>(dataFrom);
+    console.log(this.dataSource.data);
+    this.dataSource.sort=this.sort;
+    this.dataSource.paginator=this.paginator;
+    },(error:MatSort)=>{
+      throw error;
+    }
+
+  );
+ 
+  }
 
   displayedColumns: string[] = ['sensor', 'desc', 'unit','optimization','current_value',
   'optimised_value','operator_low','operator_high','status'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
-
+  
 
 
   ngAfterViewInit() {
@@ -108,15 +53,23 @@ export class DisplayDataComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
 
   }
-
-  openCreateDialog(): void{
-    const dialogRef = this.dialog.open(
-      CreateRecordComponent
-    , {
+  index:number=0;
+  openCreateDialog() {
+    console.log('open dialog called')
+    const dialogRef = this.dialog.open(CreateRecordComponent, 
+      {
       width: '500px',
-      panelClass: 'my-custom-dialog'
+      panelClass: 'my-custom-dialog',
     });
-    // this.dialog.open(CreateRecordComponent);
-  };
 
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Data successfully added',result);
+      }
+    })  
+    
+  };
+  onButtonClick(){}
+
+  
 }

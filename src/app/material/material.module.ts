@@ -5,8 +5,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule, MatError} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { MatDialogModule, MatDialogContent } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
@@ -21,7 +22,10 @@ const MaterialComponents = [
   MatSidenavModule,
   MatTableModule,
   MatFormFieldModule,
+  MatInputModule,
+  
   MatDialogModule,
+  
   MatCheckboxModule,
   MatRadioModule,
   MatPaginatorModule, 

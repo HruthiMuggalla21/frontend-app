@@ -1,48 +1,60 @@
 
-<ng-template #dialogTemplate>
+
     <h2 mat-dialog-title>Create New Record</h2>
     <mat-dialog-content>
         <form [formGroup]="createForm">
-            <mat-form-field>
+
+            <mat-form-field appearnce="outline">
                 <mat-label>Sensor Name</mat-label>
                 <input matInput formControlName="sensorName" required>
+                <mat-error>This field is required</mat-error>
             </mat-form-field>
 
+            <br/>
             <mat-form-field>
                 <mat-label>Description</mat-label>
                 <textarea matInput formControlName="description"></textarea>
             </mat-form-field>
 
+            <br/>     
             <mat-form-field>
                 <mat-label>Unit</mat-label>
                 <input matInput formControlName="unit"/>
             </mat-form-field>
 
-            <mat-checkbox formControlName="useInOptimization">Use in Optimization</mat-checkbox>
+            <br/>
+            <mat-label>Use in Optimization</mat-label>
+            <mat-slide-toggle></mat-slide-toggle>
 
+            <br/><br/> 
             <mat-form-field>
                 <mat-label>Current Value</mat-label>
                 <input matInput type="number" formControlName="currentValue"/>
             </mat-form-field>
 
+            <br/>
             <mat-form-field>
                 <mat-label>Optimized Value</mat-label>
                 <input matInput type="number" formControlName="optimizedValue"/>
             </mat-form-field>
 
+            <br/>
             <mat-form-field>
                 <mat-label>Operator Low</mat-label>
                 <input matInput type="number" formControlName="operatorLow"/>
             </mat-form-field>
 
+            <br/>
             <mat-form-field>
                 <mat-label>Operator High</mat-label>
                 <input matInput type="number" formControlName="operatorHigh"/>
             </mat-form-field>
 
+            <br/>
+            <mat-label>Status</mat-label>
             <mat-radio-group formControlName="status">
                 <mat-radio-button value="true">Good</mat-radio-button>
-                <mat-radio-button value="false">Good</mat-radio-button>
+                <mat-radio-button value="false">Bad</mat-radio-button>
             </mat-radio-group>
         </form>
     </mat-dialog-content>
@@ -50,4 +62,5 @@
         <button mat-button (click)="onCancelClick()">Cancel</button>
         <button mat-button (click)="onSaveClick()">Save</button>
     </mat-dialog-actions>
-</ng-template>
+
+    

@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Elements } from './elements';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  apiUrl = 'http://localhost:3000/api/getData';
+  apiUrl = 'http://localhost:5000/api/getData';
+  postUrl='http://localhost:5000/api/create';
 
   constructor(private http: HttpClient) { }
 
@@ -14,9 +16,9 @@ export class ApiService {
     return this.http.get<any[]>(this.apiUrl);
   }
 
-  createEntry(data: any): Observable<any> {
-    console.log(data)
-    return this.http.post<any>(this.apiUrl, data)
+  
+  createEntry(rowData:Elements[]): Observable<Elements[]> {
+    return this.http.post<Elements[]>(`${this.postUrl}`,rowData);
   }
 
   // getPostById(id: number): Observable<any> {

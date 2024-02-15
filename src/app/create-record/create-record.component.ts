@@ -1,25 +1,27 @@
-import { Component, OnInit, ViewChild, TemplateRef} from '@angular/core';
-import {FormGroup, Validators,FormBuilder} from '@angular/forms';
-import {MatDialog} from '@angular/material/dialog'
-import {ApiService} from '../api.service'
+import { Component, OnInit, Inject} from '@angular/core';
+import { FormGroup, Validators,FormBuilder} from '@angular/forms';
+import {MatDialogContent, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
+import { MatError } from '@angular/material/form-field';
+import {ApiService} from '../api.service';
 @Component({
   // standalone:true,
   selector: 'app-create-record',
   templateUrl: './create-record.component.html',
   styleUrls: ['./create-record.component.css'],
-  providers:[],
+  providers:[ApiService],
   // imports:[]
 })
 export class CreateRecordComponent implements OnInit{
   
-  @ViewChild('dialogTemplate') dialogTemplate!: TemplateRef<any>;
-  createForm!: FormGroup;
+  data: any;
+  createForm: FormGroup;
 
-  constructor(private createFormBuilder: FormBuilder, private dialog: MatDialog, private dataService: ApiService){
-    
-    }
-  
-  ngOnInit():void{
+  constructor(
+    private createFormBuilder: FormBuilder, 
+     private apiService: ApiService,
+    @Inject(MAT_DIALOG_DATA) public newData: { data: any },
+    public dialogRef: MatDialogRef<CreateRecordComponent>)
+    {
     this.createForm = this.createFormBuilder.group({
       sensorName: ['', Validators.required],
       description:[''],
@@ -31,30 +33,40 @@ export class CreateRecordComponent implements OnInit{
       operatorHigh: [null],
       status: [false]
     });
+    }
+  
+  ngOnInit():void{
+    
   }
 
-  openDialog(): void {
-    this.dialog.open(this.dialogTemplate);
-  }
+  // openDialog(): void {
+  //   this.dialog.open(this.dialogTemplate);
+  // }
   
 
   onSaveClick(): void {
+   
     if (this.createForm.valid){
-      this.dataService.createEntry(this.createForm.value).subscribe(
+      const addedData = this.createForm.value;
+      this.apiService.createEntry(addedData).subscribe(
         response => {
           console.log('Record created successfully:', response);
-          this.dialog.closeAll();
+          alert('Data added successfully!')
+          // this.dialog.closeAll();
+          this.dialogRef.close(addedData)
         },
         error => {
           console.error('Error creating record:', error);
         }
       );
     }
+     
+      
   }
  
   onCancelClick(): void {
-    this.dialog.closeAll();
+    this.dialogRef.close();
   }
-
-  
 }
+  
+
