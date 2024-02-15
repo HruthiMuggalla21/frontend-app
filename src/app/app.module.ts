@@ -8,17 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
-// import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-// import {MatToolbarModule} from '@angular/material/toolbar';
-// import {MatIconModule} from '@angular/material/icon';
-// import {MatSidenavModule} from '@angular/material/sidenav';
-// import {MatTableModule} from '@angular/material/table';
-// import {MatFormFieldModule} from '@angular/material/form-field'
-// import {MatDialog,MAT_DIALOG_DATA,MatDialogTitle,MatDialogContent, MatDialogModule} from '@angular/material/dialog'
-// import {MatButtonModule} from '@angular/material/button'
-// import {MatCheckboxModule} from '@angular/material/checkbox'
-// import {MatRadioModule} from '@angular/material/radio';
-// import { MatTableDataSource } from '@angular/material/table';
+import {MatDialogModule} from '@angular/material/dialog';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,7 +25,9 @@ import { MaterialModule } from './material/material.module';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MatDialogModule,
+    HttpClientModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

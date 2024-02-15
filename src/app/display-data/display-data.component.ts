@@ -1,9 +1,12 @@
 
-import { Component,ViewChild,OnInit } from '@angular/core';
+import { Component,ViewChild,OnInit, AfterViewInit} from '@angular/core';
 import { Elements } from '../elements';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import {MatDialog} from '@angular/material/dialog';
+import { CreateRecordComponent } from '../create-record/create-record.component';
+
 // import { MaterialModule } from '../material/material.module';
 
 const ELEMENT_DATA: Elements[] = [
@@ -79,7 +82,14 @@ export class DisplayDataComponent implements OnInit {
   title = 'materialApp';
   @ViewChild(MatPaginator) paginator!:MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  // @ViewChild('createDialogTemplate') set createDialogTemplate(value: TemplateRef<any>){
+  //   if (value){
+  //     this.dialogTemplate = value;
+  //   }
+  // }
+  // dialogTemplate!: TemplateRef<any>;
   
+  constructor(private dialog: MatDialog){}
   ngOnInit(): void{
   this.dataSource.sort=this.sort;
   this.dataSource.paginator=this.paginator;
@@ -99,6 +109,14 @@ export class DisplayDataComponent implements OnInit {
 
   }
 
-  addValue(){};
+  openCreateDialog(): void{
+    const dialogRef = this.dialog.open(
+      CreateRecordComponent
+    , {
+      width: '500px',
+      panelClass: 'my-custom-dialog'
+    });
+    // this.dialog.open(CreateRecordComponent);
+  };
 
 }
