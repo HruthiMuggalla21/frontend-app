@@ -1,9 +1,9 @@
 <div class="header">
   <h1>Manipulated values</h1>
   <div class="actions">
+    <button mat-raised-button *ngIf="!index" (click)="openCreateDialog()" >Add</button>
     <button mat-raised-button *ngIf="!index" (click)="onButtonClick()">Edit</button>
-    <button mat-raised-button *ngIf="index" (click)="openCreateDialog()" >Add</button>
-    <button mat-raised-button *ngIf="index">Update</button>
+    <button mat-raised-button *ngIf="!index">Update</button>
   </div>
 
 </div>

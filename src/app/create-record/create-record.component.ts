@@ -39,24 +39,21 @@ export class CreateRecordComponent implements OnInit{
     
   }
 
-  // openDialog(): void {
-  //   this.dialog.open(this.dialogTemplate);
-  // }
-  
 
   onSaveClick(): void {
    
     if (this.createForm.valid){
       const addedData = this.createForm.value;
+      console.log(addedData)
       this.apiService.createEntry(addedData).subscribe(
         response => {
           console.log('Record created successfully:', response);
           alert('Data added successfully!')
-          // this.dialog.closeAll();
           this.dialogRef.close(addedData)
         },
         error => {
           console.error('Error creating record:', error);
+          
         }
       );
     }

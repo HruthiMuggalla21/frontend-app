@@ -29,3 +29,9 @@ button {
     background-color: black;
     color: white;
 }
+
+.header{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+}

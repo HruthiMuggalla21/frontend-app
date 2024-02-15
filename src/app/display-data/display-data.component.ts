@@ -43,8 +43,8 @@ export class DisplayDataComponent implements OnInit {
  
   }
 
-  displayedColumns: string[] = ['sensor', 'desc', 'unit','optimization','current_value',
-  'optimised_value','operator_low','operator_high','status'];
+  displayedColumns: string[] = ['sensor_name', 'description', 'unit','use_in_optimization','current_value',
+  'optimized_value','operator_low','operator_high','status'];
   
 
 
