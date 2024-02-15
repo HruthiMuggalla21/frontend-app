@@ -12,8 +12,8 @@
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
 
   <ng-container matColumnDef="sensor_name">
-    <th mat-header-cell *matHeaderCellDef  mat-sort-header class="col-headers"> Sensor Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.sensor_name}} </td>
+    <th mat-header-cell *matHeaderCellDef  mat-sort-header > Sensor Name </th>
+    <td mat-cell *matCellDef="let element" > {{element.sensor_name}} </td>
   </ng-container>
   <hr>
 
@@ -30,7 +30,7 @@
   <ng-container matColumnDef="use_in_optimization">
     <th mat-header-cell *matHeaderCellDef> Use in Optimization </th>
     <td mat-cell *matCellDef="let element">
-      <mat-slide-toggle>
+      <mat-slide-toggle [checked]="element.use_in_optimization">
       </mat-slide-toggle>
        <!-- {{element.use_in_optimization}} -->
        <!-- <i class="fas fa-toggle-on"></i> -->

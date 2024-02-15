@@ -3,6 +3,7 @@ import { FormGroup, Validators,FormBuilder} from '@angular/forms';
 import {MatDialogContent, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
 import { MatError } from '@angular/material/form-field';
 import {ApiService} from '../api.service';
+import { Elements } from '../elements';
 @Component({
   // standalone:true,
   selector: 'app-create-record',
@@ -43,22 +44,30 @@ export class CreateRecordComponent implements OnInit{
   onSaveClick(): void {
    
     if (this.createForm.valid){
-      const addedData = this.createForm.value;
+      const addedData: Elements = {
+        sensorName: this.createForm.value.sensorName,
+        description: this.createForm.value.description,
+        unit: this.createForm.value.unit,
+        useInOptimization: this.createForm.value.useInOptimization,
+        currentValue: this.createForm.value.currentValue,
+        optimizedValue: this.createForm.value.optimizedValue,
+        operatorLow: this.createForm.value.operatorLow,
+        operatorHigh: this.createForm.value.operatorHigh,
+        status: this.createForm.value.status
+      };
       console.log(addedData)
-      this.apiService.createEntry(addedData).subscribe(
-        response => {
+      this.apiService.createEntry([addedData]).subscribe({
+        next: (response) => {
           console.log('Record created successfully:', response);
           alert('Data added successfully!')
           this.dialogRef.close(addedData)
         },
-        error => {
+        error: (error) => {
           console.error('Error creating record:', error);
           
         }
-      );
-    }
-     
-      
+      });
+    }    
   }
  
   onCancelClick(): void {

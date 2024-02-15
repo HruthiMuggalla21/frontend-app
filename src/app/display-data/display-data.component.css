@@ -35,3 +35,9 @@ button {
     flex-direction:row;
     justify-content: space-between;
 }
+
+th{
+    background-color: aqua;
+    /* color: red; */
+}
+

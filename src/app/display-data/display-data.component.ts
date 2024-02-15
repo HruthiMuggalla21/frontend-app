@@ -59,7 +59,7 @@ export class DisplayDataComponent implements OnInit {
     const dialogRef = this.dialog.open(CreateRecordComponent, 
       {
       width: '500px',
-      panelClass: 'my-custom-dialog',
+      // panelClass: 'my-custom-dialog',
     });
 
     dialogRef.afterClosed().subscribe(result => {

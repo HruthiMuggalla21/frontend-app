@@ -1,11 +1,11 @@
 export interface Elements{
-    sensor: string;
-    desc: string;
+    sensorName: string;
+    description: string;
     unit: string;
-    optimization:boolean;
-    current_value:number;
-    optimised_value:number;
-    operator_low:number;
-    operator_high:number;
+    useInOptimization:boolean;
+    currentValue:number;
+    optimizedValue:number;
+    operatorLow:number;
+    operatorHigh:number;
     status:boolean;
   }
