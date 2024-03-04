@@ -1,6 +1,50 @@
 table{
     width: 100%;
+    background-color: black;
+    
+    
 }
+h1 {
+    color: white;
+}
+td {
+    color: white;
+    border-right: 1px solid grey;
+    border-bottom: 1px solid grey;
+}
+
+.mat-mdc-header-cell {
+    color: white;   
+}
+
+.mat-mdc-header-row  {
+    background-color: 	#636363;
+   
+}
+
+th {
+    border-right: 1px solid grey;
+}
+  
+mat-paginator{
+    background-color: aqua;
+    color: white;
+}
+mat-mdc-paginator-icon {
+	fill: #ff00008a !important;
+}
+mat-mdc-icon-button[disabled] .mat-mdc-paginator-icon {
+	fill: #ff00001f !important;
+}
+
+ 
+.mat-mdc-slide-toggle {
+    background-color: grey;
+    border-radius: 50px;
+    height: 20px;
+    width: 35px;
+}
+
 
 .class1{
     color: green;
@@ -36,8 +80,21 @@ button {
     justify-content: space-between;
 }
 
-th{
-    background-color: aqua;
-    /* color: red; */
+
+
+/* .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb:before,
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb:after {
+  display: none !important;
+} */
+
+/* .mdc-switch.mdc-switch--unselected .mdc-switch__icon{
+    display: none !important;
+}
+path {
+    display: none !important;
+
 }
 
+.mdc-switch__icon{
+    display:none;
+} */

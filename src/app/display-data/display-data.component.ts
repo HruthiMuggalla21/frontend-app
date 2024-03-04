@@ -22,6 +22,8 @@ import { ApiService } from '../api.service';
 
 export class DisplayDataComponent implements OnInit {
   title = 'materialApp';
+  color='grey';
+  
   @ViewChild(MatPaginator) paginator!:MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   
@@ -45,9 +47,8 @@ export class DisplayDataComponent implements OnInit {
 
   displayedColumns: string[] = ['sensor_name', 'description', 'unit','use_in_optimization','current_value',
   'optimized_value','operator_low','operator_high','status'];
+ 
   
-
-
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;

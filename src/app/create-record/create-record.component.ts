@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject} from '@angular/core';
 import { FormGroup, Validators,FormBuilder} from '@angular/forms';
-import {MatDialogContent, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
-import { MatError } from '@angular/material/form-field';
+import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {ApiService} from '../api.service';
 import { Elements } from '../elements';
 @Component({
@@ -14,7 +13,7 @@ import { Elements } from '../elements';
 })
 export class CreateRecordComponent implements OnInit{
   
-  data: any;
+  // data: any;
   createForm: FormGroup;
 
   constructor(
@@ -24,14 +23,14 @@ export class CreateRecordComponent implements OnInit{
     public dialogRef: MatDialogRef<CreateRecordComponent>)
     {
     this.createForm = this.createFormBuilder.group({
-      sensorName: ['', Validators.required],
+      sensor_name: ['', Validators.required],
       description:[''],
       unit: [''],
-      useInOptimization: [false],
-      currentValue: [null],
-      optimizedValue: [null],
-      operatorLow: [null],
-      operatorHigh: [null],
+      use_in_optimization: [false],
+      current_value: [null],
+      optimized_value: [null],
+      operator_low: [null],
+      operator_high: [null],
       status: [false]
     });
     }
@@ -45,28 +44,28 @@ export class CreateRecordComponent implements OnInit{
    
     if (this.createForm.valid){
       const addedData: Elements = {
-        sensorName: this.createForm.value.sensorName,
+        sensor_name: this.createForm.value.sensor_name,
         description: this.createForm.value.description,
         unit: this.createForm.value.unit,
-        useInOptimization: this.createForm.value.useInOptimization,
-        currentValue: this.createForm.value.currentValue,
-        optimizedValue: this.createForm.value.optimizedValue,
-        operatorLow: this.createForm.value.operatorLow,
-        operatorHigh: this.createForm.value.operatorHigh,
+        use_in_optimization: this.createForm.value.use_in_optimization,
+        current_value: this.createForm.value.current_value,
+        optimized_value: this.createForm.value.optimized_value,
+        operator_low: this.createForm.value.operator_low,
+        operator_high: this.createForm.value.operator_high,
         status: this.createForm.value.status
       };
       console.log(addedData)
-      this.apiService.createEntry([addedData]).subscribe({
-        next: (response) => {
-          console.log('Record created successfully:', response);
-          alert('Data added successfully!')
-          this.dialogRef.close(addedData)
+      this.apiService.createEntry(addedData).subscribe({
+        next : (res) => {
+          console.log(res);
+          alert('Record created successfully!');
+          this.dialogRef.close(addedData);
         },
         error: (error) => {
-          console.error('Error creating record:', error);
-          
-        }
-      });
+        console.error('Error creating record', error);
+      }
+    });
+     
     }    
   }
  
