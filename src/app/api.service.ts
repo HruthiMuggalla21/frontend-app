@@ -10,6 +10,7 @@ import { HttpHeaders } from '@angular/common/http';
 export class ApiService {
   private apiUrl: string = 'http://localhost:5000/api/getData';
   private postUrl: string='http://localhost:5000/api/create';
+  private editUrl: string = 'http://localhost:5000/api/editData';
 
   constructor(private http: HttpClient) { }
 
@@ -26,6 +27,8 @@ export class ApiService {
     return this.http.post<Elements>(this.postUrl,rowData);
   }
 
-  
+  editData(data: any[]): Observable<any> {
+    return this.http.put<any>(this.editUrl, data);
+  }
   
 }

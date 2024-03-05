@@ -1,0 +1,23 @@
+
+.dialog-box {
+    background-color: #636363;
+}
+.mat-mdc-dialog-title{
+    color: black;
+}
+mat-label {
+    color: black;
+}
+
+
+.actions {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+button {
+    color: rgb(150, 84, 84);
+    border: 1px solid grey;
+    background-color: red;
+    border-radius: 10px;
+}

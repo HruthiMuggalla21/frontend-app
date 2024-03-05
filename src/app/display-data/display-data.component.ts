@@ -55,6 +55,12 @@ export class DisplayDataComponent implements OnInit {
 
   }
   index:number=0;
+
+  getRowStyle(element: Elements):any{
+    return {
+      'color': element.use_in_optimization? 'white': 'grey'
+    }
+  }
   openCreateDialog() {
     console.log('open dialog called')
     const dialogRef = this.dialog.open(CreateRecordComponent, 
@@ -70,7 +76,9 @@ export class DisplayDataComponent implements OnInit {
     })  
     
   };
-  onButtonClick(){}
+  updateData(){
+
+  }
 
   
 }

@@ -2,7 +2,7 @@
   <h1>Manipulated Variables</h1>
   <div class="actions">
     <button mat-raised-button *ngIf="!index" (click)="openCreateDialog()" >Add</button>
-    <button mat-raised-button *ngIf="!index" (click)="onButtonClick()">Edit</button>
+    <button mat-raised-button *ngIf="!index" (click)="updateData()">Edit</button>
     
   </div>
 
@@ -29,14 +29,13 @@
 
   <ng-container matColumnDef="use_in_optimization">
     <th mat-header-cell *matHeaderCellDef> Use in Optimization </th>
-    <td mat-cell *matCellDef="let element">
-      <!-- <mat-slide-toggle [checked]="element.use_in_optimization" disabled="!element.use_in_optimization">
-      </mat-slide-toggle> -->
+    <td mat-cell *matCellDef="let element" [ngStyle]="getRowStyle(element)">
+      
       <mat-slide-toggle
           size="small"
           color="primary"
           [checked]="element.use_in_optimization"
-          disabled="!element.use_in_optimization">
+          disabled="true">
 
       </mat-slide-toggle>
       
@@ -58,6 +57,7 @@
   <ng-container matColumnDef="operator_low">
     <th mat-header-cell *matHeaderCellDef> Operator Low</th>
     <td mat-cell *matCellDef="let element"> {{element.operator_low}} </td>
+    
   </ng-container>
 
   <ng-container matColumnDef="operator_high">

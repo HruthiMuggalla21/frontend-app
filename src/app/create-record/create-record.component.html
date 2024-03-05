@@ -1,4 +1,4 @@
-
+<div class="dialog-box">
     <h2 mat-dialog-title>Create New Record</h2>
     <mat-dialog-content>
         <form [formGroup]="createForm">
@@ -57,9 +57,9 @@
             </mat-radio-group>
         </form>
     </mat-dialog-content>
-    <mat-dialog-actions>
-        <button mat-button (click)="onCancelClick()">Cancel</button>
-        <button mat-button (click)="onSaveClick()">Save</button>
+    <mat-dialog-actions class="actions">
+        <button mat-raised-button (click)="onCancelClick()">Cancel</button>
+        <button mat-raised-button (click)="onSaveClick()">Save</button>
     </mat-dialog-actions>
-
+</div>
     

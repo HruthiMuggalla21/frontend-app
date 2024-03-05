@@ -6,6 +6,7 @@ table{
 }
 h1 {
     color: white;
+    font-weight: 500;
 }
 td {
     color: white;
@@ -46,13 +47,14 @@ mat-mdc-icon-button[disabled] .mat-mdc-paginator-icon {
 }
 
 
+
 .class1{
     color: green;
     transform: scale(0.7);
     vertical-align: middle;
 }
 .class2{
-    color: red;
+    color: orange;
     transform: scale(0.7);
     vertical-align: middle;
 }
@@ -60,8 +62,13 @@ mat-mdc-icon-button[disabled] .mat-mdc-paginator-icon {
 .header{
     display: flex;
     flex-direction:row-reverse;
+    justify-content: space-between;
 }
 
+.actions {
+    margin-top: 20px;
+    margin-right: 15px;
+}
 button {
     flex: 0 0 auto;
     margin-left: 10px; /* Add space between the buttons */
@@ -79,7 +86,9 @@ button {
     flex-direction:row;
     justify-content: space-between;
 }
-
+.mat-mdc-form-field.mat-warn::selected{
+    color: white;
+}
 
 
 /* .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb:before,
