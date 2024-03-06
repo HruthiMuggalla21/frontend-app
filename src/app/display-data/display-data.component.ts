@@ -23,6 +23,7 @@ import { ApiService } from '../api.service';
 export class DisplayDataComponent implements OnInit {
   title = 'materialApp';
   color='grey';
+  slideToggleState: boolean = true;
   
   @ViewChild(MatPaginator) paginator!:MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -56,12 +57,75 @@ export class DisplayDataComponent implements OnInit {
   }
   index:number=0;
 
-  getRowStyle(element: Elements):any{
-    
-    return {
-      'background-color': element.use_in_optimization? 'white': 'grey'
+  editflag:boolean=false;
+    flag2:boolean=false;
+
+    editButtonClicked(){
+      this.editflag=true;
+      this.flag2=!this.flag2;
     }
-  }
+    cancelButtonClicked(){
+      this.flag2=!this.flag2;
+      this.editflag=!this.editflag
+
+    }
+
+    selectedRow:any=[];
+    onRowClicked(row:any){
+        if(this.editflag)
+        {
+          this.selectedRow.push(row);
+          console.log("selected row is : ",this.selectedRow);
+        }
+        
+    }
+
+    submitClicked()
+    {
+      this.editflag=false;
+      if(this.selectedRow)
+      {
+        this.updateColumn(this.selectedRow);
+      }
+    }
+
+    updateColumn(arr:any){
+
+      this.apiService.updateColumn(arr).subscribe((data)=>{
+        console.log("data in subscribe is ", data); 
+        console.log("before updating datasource",this.dataSource.data)
+
+        let n = data.length;
+        for(let i=0;i<n;i++)
+        {
+          this.updateDataSource(data[i]);
+        }
+        
+      });
+     
+    }
+
+    updateDataSource(obj:any)
+    {
+
+      if(obj)
+      {
+          let indexToUpdate = this.dataSource.data.findIndex(item => item.sensor_name=== obj.sensor_name);
+          console.log("from update source line : obj_low and obj_high",obj.operator_low ,obj.operator_high )
+
+          this.dataSource.data[indexToUpdate].operator_low = obj.operator_low;
+          this.dataSource.data[indexToUpdate].operator_high = obj.operator_high;
+
+
+          this.dataSource.data= Object.assign([], this.dataSource.data);
+          console.log("After updating: datasource is ",this.dataSource.data);
+
+      }
+
+    }
+   
+    
+
   openCreateDialog() {
     console.log('open dialog called')
     const dialogRef = this.dialog.open(CreateRecordComponent, 
