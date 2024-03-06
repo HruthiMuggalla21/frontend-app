@@ -2,7 +2,7 @@
 <div class="header">
   <h1>Manipulated Variables</h1>
   <div class="actions-top">
-    <button class="add-button" mat-raised-button *ngIf="!index" (click)="openCreateDialog()" >Add</button>
+    <button class="add-button" mat-raised-button *ngIf="!index && !flag2" (click)="openCreateDialog()" >Add</button>
     <button class="edit-button" mat-raised-button *ngIf="!flag2" (click)="editButtonClicked()">Edit</button>
     <button class = "submit-button" mat-raised-button *ngIf="flag2" (click)="submitClicked()">Submit</button>
   <button class="cancel-button"mat-raised-button *ngIf="flag2" (click)="cancelButtonClicked()" >Cancel</button>
@@ -62,7 +62,7 @@
   <ng-container matColumnDef="operator_low">
     <th mat-header-cell *matHeaderCellDef> Operator Low</th>
     <td mat-cell *matCellDef="let element" >
-      <input *ngIf="editflag" matInput [value]="element.operator_low" [(ngModel)]="element.operator_low" placeholder=""  >
+      <input class="edit-box" *ngIf="editflag" matInput [value]="element.operator_low" [(ngModel)]="element.operator_low" placeholder=""  >
       <span *ngIf="!editflag" [ngClass]="{'orange-text': element.optimized_value === element.operator_low || element.optimized_value === element.operator_high}">{{element.operator_low}}</span>
     </td>
   </ng-container>
@@ -70,7 +70,7 @@
   <ng-container matColumnDef="operator_high">
     <th mat-header-cell *matHeaderCellDef> Operator High </th>
     <td mat-cell *matCellDef="let element">
-      <input *ngIf="editflag" matInput [value]="element.operator_high" [(ngModel)]="element.operator_high" placeholder="" >
+      <input class="edit-box" *ngIf="editflag" matInput [value]="element.operator_high" [(ngModel)]="element.operator_high" placeholder="" >
       <span *ngIf="!editflag" [ngClass]="{'orange-text': element.optimized_value === element.operator_low || element.optimized_value === element.operator_high}">{{element.operator_high}}</span>
  
   </td>
