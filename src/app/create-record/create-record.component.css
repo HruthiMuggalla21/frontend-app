@@ -1,6 +1,8 @@
 
 .dialog-box {
-    background-color: #636363;
+    background-color: 	#C0C0C0;
+    text-align: center;
+    
 }
 .mat-mdc-dialog-title{
     color: black;

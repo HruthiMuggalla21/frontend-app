@@ -57,8 +57,9 @@ export class DisplayDataComponent implements OnInit {
   index:number=0;
 
   getRowStyle(element: Elements):any{
+    
     return {
-      'color': element.use_in_optimization? 'white': 'grey'
+      'background-color': element.use_in_optimization? 'white': 'grey'
     }
   }
   openCreateDialog() {
