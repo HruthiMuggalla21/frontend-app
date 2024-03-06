@@ -1,6 +1,7 @@
 table{
     width: 100%;
     background-color: #121212; 
+    table-layout: fixed;
 }
 h1 {
     margin-left: 10px;
@@ -135,7 +136,7 @@ th {
     
 }
 
-  input.mat-raised-button.mat-primary{
+input.mat-raised-button.mat-primary{
     background-color: black;
     color: white;
 }
