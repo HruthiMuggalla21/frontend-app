@@ -1,26 +1,31 @@
 table{
     width: 100%;
-    background-color: #292929; 
+    background-color: #121212; 
+    table-layout: fixed;
 }
 h1 {
     margin-left: 10px;
-    color: white;
-    font-weight: 500;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
 }
 td {
     color: white;
     border-right: 1px solid grey;
     border-bottom: 1px solid grey;
+    font-weight: 400;
+    font-family: "Noto Sans", sans-serif;
 }
 
 .mat-mdc-header-cell {
-    color: white;
-    font-family: sans-serif;
-    font-weight: bold;   
+    color: #FFFFFF;
+       
 }
 
 .mat-mdc-header-row  {
-    background-color: 	#636363;
+    background-color: 	#414141;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
    
 }
 
@@ -42,23 +47,23 @@ th {
 
 .row-color-false {
     .mat-mdc-cell{
-        color: grey;
+        color: #717171;
     }
 }
 
 .green-text {
-    color: green;
+    color: #02A783;
 }
 .orange-text {
-    color: orange;
+    color: #E87516;
 }
 .class1{
-    color: green;
+    color: #02A783;
     transform: scale(0.7);
     vertical-align: middle;
 }
 .class2{
-    color: orange;
+    color: #f3a90b;
     transform: scale(0.7);
     vertical-align: middle;
 }
@@ -70,12 +75,13 @@ th {
 }
 
 .actions-top {
-    /* margin-top: 10px; */
+    margin-top: 8px;
     margin-right: 10px;   
     padding:20px;
-   
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
 }
-.add-button, .edit-button {
+.add-button, .edit-button, .submit-button, .cancel-button {
     padding:10px 30px 10px 30px;
    
 }
@@ -91,11 +97,17 @@ th {
    border: 2px solid grey;
    background-color: #292929;
 }
-.mat-mdc-raised-button.edit-button{
+.mat-mdc-raised-button.edit-button, .mat-mdc-raised-button.cancel-button{
    
     color: white;
    border: 2px solid grey;
    background-color: #292929;
+}
+.mat-mdc-raised-button.submit-button{
+    margin-right:10px;
+    color: white;
+   border: 2px solid grey;
+   background-color: #147D64;
 }
 .mat-mdc-raised-button.add-button:hover, .mat-mdc-raised-button.edit-button:hover{
    
@@ -104,11 +116,27 @@ th {
    background-color: grey;
 }
 
+.slider-background{
+    .mat-mdc-slide-toggle {
+        background-color: #02A783;
+          
+      }
+}
 
+.edit-box {
+    padding: 10px;
+    margin: 0;
+    background-color: #121212;
+    box-sizing: border-box;
+    border: 2px solid grey;
+    color: #FFFFFF;
+    height: 35px;
+    width: 100%; 
+    border-radius: 5px;
+    
+}
 
-
-
-  input.mat-raised-button.mat-primary{
+input.mat-raised-button.mat-primary{
     background-color: black;
     color: white;
 }
