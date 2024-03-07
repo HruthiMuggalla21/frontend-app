@@ -168,3 +168,7 @@ input.mat-raised-button.mat-primary{
 ::ng-deep .mat-mdc-icon-button[disabled]{
     color: red;
 }
+
+.red-border{
+    border-color: red;
+}

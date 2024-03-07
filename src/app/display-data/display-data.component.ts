@@ -145,5 +145,21 @@ export class DisplayDataComponent implements OnInit {
 
   }
 
+  valid:boolean=false;
+
+  // onUserInput(event:any,num:any){
+  //   let op_low=event.target.value;
+  //   console.log('valid b4 if',this.valid);
+    
+  //   if(op_low>num){
+  //     this.valid=false;
+  //   }
+  //   console.log("op_low and op_high",op_low,num);
+  //   console.log('valid after if',this.valid);
+
+    
+  // }
+  
+
   
 }
