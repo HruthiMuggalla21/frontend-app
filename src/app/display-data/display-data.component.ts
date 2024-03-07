@@ -59,19 +59,25 @@ export class DisplayDataComponent implements OnInit {
 
   editflag:boolean=false;
     flag2:boolean=false;
+    submitFlag:boolean = false;
+
 
     editButtonClicked(){
       this.editflag=true;
-      this.flag2=!this.flag2;
+      // this.flag2=!this.flag2;
+      this.flag2 = true;
+      this.submitFlag = true;
     }
     cancelButtonClicked(){
-      this.flag2=!this.flag2;
-      this.editflag=!this.editflag
+      this.flag2=false;
+      this.editflag=!this.editflag;
+      this.submitFlag = false;
 
     }
 
     selectedRow:any=[];
     onRowClicked(row:any){
+      
         if(this.editflag)
         {
           this.selectedRow.push(row);
@@ -82,7 +88,9 @@ export class DisplayDataComponent implements OnInit {
 
     submitClicked()
     {
+      this.flag2 = false;
       this.editflag=false;
+      this.submitFlag = false;
       if(this.selectedRow)
       {
         this.updateColumn(this.selectedRow);
@@ -124,7 +132,7 @@ export class DisplayDataComponent implements OnInit {
 
     }
    
-    
+   
 
   openCreateDialog() {
     console.log('open dialog called')
