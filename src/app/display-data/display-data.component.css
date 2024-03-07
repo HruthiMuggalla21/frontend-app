@@ -140,3 +140,7 @@ th {
 ::ng-deep .mat-mdc-icon-button[disabled]{
     color: red;
 }
+
+.red-border{
+    border-color: red;
+}
