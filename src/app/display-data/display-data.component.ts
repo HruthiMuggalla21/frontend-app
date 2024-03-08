@@ -60,7 +60,7 @@ export class DisplayDataComponent implements OnInit {
     editflag:boolean=false;
     flag2:boolean=false;
     submitFlag:boolean = false;
-    disabledFlag:boolean=false;
+    
 
     editButtonClicked(){
       this.editflag=true;
@@ -73,8 +73,6 @@ export class DisplayDataComponent implements OnInit {
       this.flag2=false;
       this.editflag=!this.editflag;
       this.submitFlag = false;
-
-
     }
 
     selectedRow:any=[];
