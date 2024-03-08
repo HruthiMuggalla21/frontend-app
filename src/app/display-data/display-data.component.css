@@ -86,6 +86,8 @@ th {
 }
 .add-button, .edit-button, .submit-button, .cancel-button {
     padding:10px 30px 10px 30px;
+    cursor: pointer;
+
    
 }
  /* .mat-mdc-button-touch-target{
@@ -136,14 +138,14 @@ th {
     height: 35px;
     width: 100%; 
     border-radius: 5px;
-    
 }
 
 .error{
     .cdk-text-field-autofill-monitored:not(:-webkit-autofill){
         /* .mat-mdc-input-element{ */
         /* border-color:2px solid red; */
-        background-color:rgb(157, 136, 98);
+        background-color:#feeaee;
+        color: #e16e75;
     }
 }
 
@@ -163,11 +165,16 @@ input.mat-raised-button.mat-primary{
 }
 
 
+::ng-deep.paginator-additional{
+
+    .mat-mdc-paginator-icon {
+        fill: #FFFFFF !important;
+    }
+}
 .paginator {
     display:flex;
     flex-direction:row;
     justify-content: flex-start;
-    background-color: aqua;
     --mat-paginator-navigation-color: red;
     
 }
@@ -190,8 +197,8 @@ input.mat-raised-button.mat-primary{
 }
 
 ::ng-deep .mat-mdc-paginator-outer-container {
-    background-color: aqua;
-    color: red;
+    background-color: #414141;
+    color: #121212;
 }
 ::ng-deep .mat-mdc-icon-button.mat-mdc-button-base{
     color: red;
@@ -219,3 +226,8 @@ input.mat-raised-button.mat-primary{
     color: #717171;
 
   }
+
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
