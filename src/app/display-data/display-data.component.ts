@@ -62,8 +62,10 @@ export class DisplayDataComponent implements OnInit {
     editflag:boolean=false;
     flag2:boolean=false;
     submitFlag:boolean = false;
+
     two_way_bind:boolean=false;
     rowclick:boolean=false;
+
 
 
 
@@ -78,6 +80,7 @@ export class DisplayDataComponent implements OnInit {
       this.flag2=false;
       this.editflag=!this.editflag;
       this.submitFlag = false;
+
       this.two_way_bind=false;
 
       this.apiService.getData().subscribe((dataFrom: Elements[]) => {
