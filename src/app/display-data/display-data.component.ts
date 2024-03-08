@@ -66,7 +66,7 @@ export class DisplayDataComponent implements OnInit {
     }
     cancelButtonClicked(){
       this.flag2=!this.flag2;
-      this.editflag=!this.editflag
+      this.editflag=false; // new change
 
     }
 
@@ -74,7 +74,10 @@ export class DisplayDataComponent implements OnInit {
     onRowClicked(row:any){
         if(this.editflag)
         {
-          this.selectedRow.push(row);
+          let index = this.selectedRow.findIndex((sel_row: { sensor_name: string }) => sel_row.sensor_name === row.sensor_name);
+          
+         if(index==-1) this.selectedRow.push(row);
+         else this.selectedRow.splice(index,1);
           console.log("selected row is : ",this.selectedRow);
         }
         
@@ -119,8 +122,10 @@ export class DisplayDataComponent implements OnInit {
 
           this.dataSource.data= Object.assign([], this.dataSource.data);
           console.log("After updating: datasource is ",this.dataSource.data);
+          this.selectedRow=[];
 
       }
+      this.selectedRow=[];
 
     }
    
@@ -145,7 +150,7 @@ export class DisplayDataComponent implements OnInit {
 
   }
 
-  valid:boolean=false;
+  
 
   // onUserInput(event:any,num:any){
   //   let op_low=event.target.value;
@@ -156,10 +161,44 @@ export class DisplayDataComponent implements OnInit {
   //   }
   //   console.log("op_low and op_high",op_low,num);
   //   console.log('valid after if',this.valid);
-
-    
+ 
   // }
-  
+
+  validateInput(value1:any,value2:any)
+  {
+    if(typeof(value1)!='string' && typeof(value2)!='string' )
+    {
+      return (value1>value2);
+
+    }
+    else return false;
+  }
+
+  // value1:number=0;
+  // value2:number=0;
+
+  valid:boolean=false;
+
+  onInput(value1:any,value2:any){
+    this.valid=value1<value2;
+    console.log('input....', typeof(value1),value1,value2);// we are getting the updated op_low and op_high;
+    return this.valid;
+    
+  }
+
+  test(element: any){
+   return element.operator_low > element.operator_high;
+  }
+
+  isInvalid(element:any)
+  {
+    return element.operator_low > element.operator_high;
+    console.log('thik thak');
+    
+
+  }
+
+
 
   
 }
