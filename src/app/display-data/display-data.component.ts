@@ -59,19 +59,27 @@ export class DisplayDataComponent implements OnInit {
 
   editflag:boolean=false;
     flag2:boolean=false;
+    submitFlag:boolean = false;
+
 
     editButtonClicked(){
       this.editflag=true;
-      this.flag2=!this.flag2;
+      // this.flag2=!this.flag2;
+      this.flag2 = true;
+      this.submitFlag = true;
     }
     cancelButtonClicked(){
-      this.flag2=!this.flag2;
-      this.editflag=false; // new change
+
+      this.flag2=false;
+      this.editflag=!this.editflag;
+      this.submitFlag = false;
+
 
     }
 
     selectedRow:any=[];
     onRowClicked(row:any){
+      
         if(this.editflag)
         {
           let index = this.selectedRow.findIndex((sel_row: { sensor_name: string }) => sel_row.sensor_name === row.sensor_name);
@@ -85,7 +93,9 @@ export class DisplayDataComponent implements OnInit {
 
     submitClicked()
     {
+      this.flag2 = false;
       this.editflag=false;
+      this.submitFlag = false;
       if(this.selectedRow)
       {
         this.updateColumn(this.selectedRow);
@@ -129,7 +139,7 @@ export class DisplayDataComponent implements OnInit {
 
     }
    
-    
+   
 
   openCreateDialog() {
     console.log('open dialog called')

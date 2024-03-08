@@ -2,17 +2,17 @@
 <div class="header">
   <h1>Manipulated Variables</h1>
   <div class="actions-top">
-    <button class="add-button" mat-raised-button *ngIf="!index && !flag2" (click)="openCreateDialog()" >Add</button>
-    <button class="edit-button" mat-raised-button *ngIf="!flag2" (click)="editButtonClicked()">Edit</button>
-    <button class = "submit-button" mat-raised-button *ngIf="flag2" (click)="submitClicked()">Submit</button>
-  <button class="cancel-button"mat-raised-button *ngIf="flag2" (click)="cancelButtonClicked()" >Cancel</button>
+    <button class="add-button" mat-raised-button *ngIf="!index && !flag2 && !submitFlag" (click)="openCreateDialog()" >Add</button>
+    <button class="edit-button" mat-raised-button *ngIf="!flag2 && !submitFlag" (click)="editButtonClicked()">Edit</button>
+    <button class = "submit-button" mat-raised-button *ngIf="flag2 && submitFlag" (click)="submitClicked()" [disabled]="!editflag">Submit</button>
+  <button class="cancel-button"mat-raised-button *ngIf="flag2 && submitFlag" (click)="cancelButtonClicked()" >Cancel</button>
   </div>
 </div>
 
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort (matRowClick)="onRowClicked($event)">
   <ng-container matColumnDef="sensor_name">
-    <th mat-header-cell *matHeaderCellDef  mat-sort-header > Sensor Name </th>
+    <th mat-header-cell *matHeaderCellDef  mat-sort-header> Sensor Name  </th>
     <td mat-cell *matCellDef="let element" > {{element.sensor_name}} </td>
   </ng-container>
   <hr>
@@ -44,19 +44,22 @@
   
 
   <ng-container matColumnDef="current_value">
-    <th mat-header-cell *matHeaderCellDef> Current Value </th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Current Value 
+      <!-- <mat-icon >unfold_more</mat-icon>  -->
+    </th>
     <td mat-cell *matCellDef="let element" [ngClass]="{'green-text': element.use_in_optimization}"> {{element.current_value}} </td>
   </ng-container>
 
   <ng-container matColumnDef="optimized_value">
-    <th mat-header-cell *matHeaderCellDef> Optimized value </th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Optimized value </th>
     <td mat-cell *matCellDef="let element" [ngClass]="{'orange-text': element.optimized_value === element.operator_low || element.optimized_value === element.operator_high}"> {{element.optimized_value}} </td>
   </ng-container>
 
   
   <ng-container matColumnDef="operator_low">
-    <th mat-header-cell *matHeaderCellDef> Operator Low</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Operator Low</th>
     <td mat-cell *matCellDef="let element" >
+
 
       <div [ngClass]="test(element) && true ? 'error': ''">
         <div [ngSwitch]="editflag">
@@ -77,11 +80,12 @@
           </div>
         </div>
         
+
     </td>
   </ng-container>
 
   <ng-container matColumnDef="operator_high">
-    <th mat-header-cell *matHeaderCellDef> Operator High </th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Operator High </th>
     <td mat-cell *matCellDef="let element">
 
   <div [ngClass]="test(element) && true ? 'error': ''">
@@ -121,4 +125,6 @@
 
 </table>
 
+
 <mat-paginator [pageSizeOptions]="[5,10,15]" showFirstLastButtons aria-label="Select page " class="paginator" class="mat-paginator-sticky"></mat-paginator>
+

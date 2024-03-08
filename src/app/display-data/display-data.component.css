@@ -57,6 +57,9 @@ th {
 .orange-text {
     color: #E87516;
 }
+.grey-text {
+    color: grey;
+}
 .class1{
     color: #02A783;
     transform: scale(0.7);
@@ -158,8 +161,27 @@ input.mat-raised-button.mat-primary{
 }
 
 
+.paginator {
+    display:flex;
+    flex-direction:row;
+    justify-content: flex-start;
+    background-color: aqua;
+    --mat-paginator-navigation-color: red;
+    
+}
 
+/* ::ng-deep .mat-paginator{
+    .mat-mdc-icon-button{
+        color: red;
+    }
+}  */
+::ng-deep .mat-paginator-navigation .mat-mdc-icon-button {
+    color: red;
+}
 
+.mat-mdc-icon-button {
+    color: red;
+}
 ::ng-deep .mat-mdc-text-field-wrapper {
     border-width: 0;
     

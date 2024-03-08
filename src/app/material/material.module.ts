@@ -11,7 +11,8 @@ import { MatDialogModule, MatDialogContent } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
-import { MatPaginatorModule } from '@angular/material/paginator'; 
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 
 
 const MaterialComponents = [
@@ -24,7 +25,7 @@ const MaterialComponents = [
   MatTableModule,
   MatFormFieldModule,
   MatInputModule,
-  
+  MatSortModule,
   MatDialogModule,
   
   MatCheckboxModule,
