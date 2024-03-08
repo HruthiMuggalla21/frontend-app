@@ -139,6 +139,13 @@ th {
     
 }
 
+.error{
+    .cdk-text-field-autofill-monitored:not(:-webkit-autofill){
+        border-color: red;
+    }
+}
+
+
 input.mat-raised-button.mat-primary{
     background-color: black;
     color: white;
@@ -194,3 +201,19 @@ input.mat-raised-button.mat-primary{
 .red-border{
     border-color: red;
 }
+
+/* input[type="number"]:invalid{
+    border-color: red;
+} */
+
+.mat-paginator-sticky {
+    bottom: 0px;
+    position: sticky;
+    z-index: 10;
+  }
+
+  .disabled-input{
+    border: 2px solid #717171;
+    color: #717171;
+
+  }
