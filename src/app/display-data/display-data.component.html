@@ -4,7 +4,7 @@
   <div class="actions-top">
     <button class="add-button" mat-raised-button *ngIf="!index && !flag2 && !submitFlag" (click)="openCreateDialog()" >Add</button>
     <button class="edit-button" mat-raised-button *ngIf="!flag2 && !submitFlag" (click)="editButtonClicked()">Edit</button>
-    <button class = "submit-button" mat-raised-button *ngIf="flag2 && submitFlag" (click)="submitClicked()" [disabled]="!editflag && disabledFlag">Submit</button>
+    <button class = "submit-button" mat-raised-button *ngIf="flag2 && submitFlag "  (click)="submitClicked()" [disabled]="!editflag ">Submit</button>
   <button class="cancel-button"mat-raised-button *ngIf="flag2 && submitFlag" (click)="cancelButtonClicked()" >Cancel</button>
   </div>
 </div>
