@@ -38,6 +38,8 @@ export class DisplayDataComponent implements OnInit {
     console.log(this.dataSource.data);
     this.dataSource.sort=this.sort;
     this.dataSource.paginator=this.paginator;
+
+    
     },(error:MatSort)=>{
       throw error;
     }
@@ -60,6 +62,9 @@ export class DisplayDataComponent implements OnInit {
   editflag:boolean=false;
     flag2:boolean=false;
     submitFlag:boolean = false;
+    two_way_bind:boolean=false;
+    rowclick:boolean=false;
+
 
 
     editButtonClicked(){
@@ -73,12 +78,29 @@ export class DisplayDataComponent implements OnInit {
       this.flag2=false;
       this.editflag=!this.editflag;
       this.submitFlag = false;
+      this.two_way_bind=false;
 
+      this.apiService.getData().subscribe((dataFrom: Elements[]) => {
+        this.dataSource=new MatTableDataSource<Elements>(dataFrom);
+        console.log(this.dataSource.data);
+        this.dataSource.sort=this.sort;
+        this.dataSource.paginator=this.paginator;
+    
+        
+        },(error:MatSort)=>{
+          throw error;
+        }
+    
+      );
+      
 
     }
 
     selectedRow:any=[];
-    rowclick:boolean=false;
+
+    curr_op_low=null;
+    curr_op_high=null;
+    
     onRowClicked(row:any){
       this.rowclick=true;
      
@@ -88,6 +110,10 @@ export class DisplayDataComponent implements OnInit {
          
          if(index==-1) this.selectedRow.push(row);
          else this.selectedRow.splice(index,1);
+
+         this.curr_op_low=row.operator_low;
+         this.curr_op_high=row.operator_high;
+
           console.log("selected row is : ",this.selectedRow);
         }
 
@@ -208,6 +234,7 @@ export class DisplayDataComponent implements OnInit {
 
   validateInput(element:any)
   { 
+    console.log("current value of op_low is: ",element.operator_low)
      let check= element.operator_low > element.operator_high;
     this.inputcheck=!check;
      return this.inputcheck;
