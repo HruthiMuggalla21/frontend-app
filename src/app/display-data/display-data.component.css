@@ -141,7 +141,9 @@ th {
 
 .error{
     .cdk-text-field-autofill-monitored:not(:-webkit-autofill){
-        border-color: red;
+        /* .mat-mdc-input-element{ */
+        /* border-color:2px solid red; */
+        background-color:rgb(157, 136, 98);
     }
 }
 

@@ -76,19 +76,22 @@ export class DisplayDataComponent implements OnInit {
     }
 
     selectedRow:any=[];
-    
+
+    rowclick:boolean=false;
     onRowClicked(row:any){
-      
+      this.rowclick=true;
+     
+
 
         if(this.editflag)
         {
           let index = this.selectedRow.findIndex((sel_row: { sensor_name: string }) => sel_row.sensor_name === row.sensor_name);
-          
+         
          if(index==-1) this.selectedRow.push(row);
          else this.selectedRow.splice(index,1);
           console.log("selected row is : ",this.selectedRow);
         }
-        
+
     }
 
     submitClicked()
@@ -174,15 +177,15 @@ export class DisplayDataComponent implements OnInit {
  
   // }
 
-  validateInput(value1:any,value2:any)
-  {
-    if(typeof(value1)!='string' && typeof(value2)!='string' )
-    {
-      return (value1>value2);
+  // validateInput(value1:any,value2:any)
+  // {
+  //   if(typeof(value1)!='string' && typeof(value2)!='string' )
+  //   {
+  //     return (value1>value2);
 
-    }
-    else return false;
-  }
+  //   }
+  //   else return false;
+  // }
 
   // value1:number=0;
   // value2:number=0;
@@ -196,19 +199,21 @@ export class DisplayDataComponent implements OnInit {
     
   }
 
+  inputcheck:boolean=true;
+
   test(element: any){
-   return element.operator_low > element.operator_high;
+  let check= element.operator_low > element.operator_high;
+  // this.inputcheck=!check;
+   return check;
   }
 
-  isInvalid(element:any)
-  {
-    return element.operator_low > element.operator_high;
-    console.log('thik thak');
-    
+  validateInput(element:any)
+  { 
+     let check= element.operator_low > element.operator_high;
+    this.inputcheck=!check;
+     return this.inputcheck;
 
   }
 
 
-
-  
 }
