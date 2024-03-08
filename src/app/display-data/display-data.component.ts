@@ -57,10 +57,10 @@ export class DisplayDataComponent implements OnInit {
   }
   index:number=0;
 
-  editflag:boolean=false;
+    editflag:boolean=false;
     flag2:boolean=false;
     submitFlag:boolean = false;
-
+    disabledFlag:boolean=false;
 
     editButtonClicked(){
       this.editflag=true;
@@ -78,8 +78,10 @@ export class DisplayDataComponent implements OnInit {
     }
 
     selectedRow:any=[];
+    
     onRowClicked(row:any){
-      
+      this.disabledFlag=true;
+
         if(this.editflag)
         {
           let index = this.selectedRow.findIndex((sel_row: { sensor_name: string }) => sel_row.sensor_name === row.sensor_name);
