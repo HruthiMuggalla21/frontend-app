@@ -66,9 +66,13 @@ export class DisplayDataComponent implements OnInit {
     editflag:boolean=false;
     flag2:boolean=false;
     submitFlag:boolean = false;
+
+    two_way_bind:boolean=false;
     // two_way_bind:boolean=false;
     rowclick:boolean=false;
     inputcheck:boolean=true;
+
+
 
 
 
