@@ -67,10 +67,12 @@ export class DisplayDataComponent implements OnInit {
     flag2:boolean=false;
     submitFlag:boolean = false;
 
+
     two_way_bind:boolean=false;
     // two_way_bind:boolean=false;
     rowclick:boolean=false;
     inputcheck:boolean=true;
+
 
 
 
@@ -88,6 +90,7 @@ export class DisplayDataComponent implements OnInit {
       this.flag2=false;
       this.editflag=!this.editflag;
       this.submitFlag = false;
+
       this.submitFlag=false;
       this.rowclick=false;
       
@@ -97,12 +100,14 @@ export class DisplayDataComponent implements OnInit {
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
 
+
     }
 
     selectedRow:any=[];
 
     
     onRowClicked(row:any){
+
       // this.rowclick=true;
      
 
@@ -124,6 +129,7 @@ export class DisplayDataComponent implements OnInit {
 
     submitClicked()
     {
+      // this.submitButtonClicked = false;
       this.flag2 = false;
       this.editflag=false;
       this.submitFlag = false;
