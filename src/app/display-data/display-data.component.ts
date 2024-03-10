@@ -60,6 +60,8 @@ export class DisplayDataComponent implements OnInit {
     editflag:boolean=false;
     flag2:boolean=false;
     submitFlag:boolean = false;
+    rowclick:boolean=false;
+    submitButtonClicked: boolean = false;
     
 
     editButtonClicked(){
@@ -73,15 +75,16 @@ export class DisplayDataComponent implements OnInit {
       this.flag2=false;
       this.editflag=!this.editflag;
       this.submitFlag = false;
+
     }
 
     selectedRow:any=[];
 
-    rowclick:boolean=false;
+    
     onRowClicked(row:any){
-      this.rowclick=true;
-     
-
+      
+     this.rowclick=true;
+      console.log(this.rowclick);
 
         if(this.editflag)
         {
@@ -96,6 +99,7 @@ export class DisplayDataComponent implements OnInit {
 
     submitClicked()
     {
+      // this.submitButtonClicked = false;
       this.flag2 = false;
       this.editflag=false;
       this.submitFlag = false;
