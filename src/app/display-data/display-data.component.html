@@ -5,15 +5,9 @@
     <button class="add-button" mat-raised-button *ngIf="!index && !flag2 && !submitFlag" (click)="openCreateDialog()" >Add</button>
     <button class="edit-button" mat-raised-button *ngIf="!flag2 && !submitFlag" (click)="editButtonClicked()">Edit</button>
 
-   
+    <button class="submit-button" mat-raised-button *ngIf="flag2 && submitFlag" (click)="submitClicked()"  [disabled]="!inputcheck || !rowclick" >Submit</button>
+  <button class="cancel-button"mat-raised-button *ngIf="flag2 && submitFlag" (click)="cancelButtonClicked()" >Cancel</button>
 
-    <button class="cancel-button"mat-raised-button *ngIf="flag2 && submitFlag" (click)="cancelButtonClicked()" >Cancel</button>
-
-    <button class = "submit-button" mat-raised-button *ngIf="flag2 && submitFlag" (click)="submitClicked()"  [disabled]="!inputcheck || !rowclick || submitButtonClicked" >Submit</button>
-
-    
-
- 
   </div>
 </div>
 
@@ -133,6 +127,8 @@
 
 </table>
 
+<div class="paginator-additional">
+  <mat-paginator [pageSizeOptions]="[5,10,15]" showFirstLastButtons aria-label="Select page " class="paginator" class="mat-paginator-sticky"></mat-paginator>
+</div>
 
-<mat-paginator [pageSizeOptions]="[5,10,15]" showFirstLastButtons aria-label="Select page " class="paginator" class="mat-paginator-sticky"></mat-paginator>
 
