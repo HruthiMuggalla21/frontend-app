@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
 import { CreateRecordComponent } from '../create-record/create-record.component';
 import { ApiService } from '../api.service';
+import {cloneDeep} from 'lodash';
 
 // import { MaterialModule } from '../material/material.module';
 
@@ -31,6 +32,8 @@ export class DisplayDataComponent implements OnInit {
   constructor(private dialog: MatDialog, private apiService: ApiService){}
 
   dataSource: MatTableDataSource<Elements>=new MatTableDataSource<Elements>();
+  cloned_dataSource: MatTableDataSource<Elements>=new MatTableDataSource<Elements>();
+
 
   ngOnInit(): void{
   this.apiService.getData().subscribe((dataFrom: Elements[]) => {
@@ -38,6 +41,7 @@ export class DisplayDataComponent implements OnInit {
     console.log(this.dataSource.data);
     this.dataSource.sort=this.sort;
     this.dataSource.paginator=this.paginator;
+    this.cloned_dataSource=cloneDeep(this.dataSource);
 
     
     },(error:MatSort)=>{
@@ -62,8 +66,10 @@ export class DisplayDataComponent implements OnInit {
     editflag:boolean=false;
     flag2:boolean=false;
     submitFlag:boolean = false;
-    two_way_bind:boolean=false;
+    // two_way_bind:boolean=false;
     rowclick:boolean=false;
+    inputcheck:boolean=true;
+
 
 
 
@@ -78,43 +84,34 @@ export class DisplayDataComponent implements OnInit {
       this.flag2=false;
       this.editflag=!this.editflag;
       this.submitFlag = false;
-      this.two_way_bind=false;
-
-      this.apiService.getData().subscribe((dataFrom: Elements[]) => {
-        this.dataSource=new MatTableDataSource<Elements>(dataFrom);
-        console.log(this.dataSource.data);
-        this.dataSource.sort=this.sort;
-        this.dataSource.paginator=this.paginator;
-    
-        
-        },(error:MatSort)=>{
-          throw error;
-        }
-    
-      );
+      this.submitFlag=false;
+      this.rowclick=false;
       
+
+      
+      this.dataSource=this.cloned_dataSource;
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
 
     }
 
     selectedRow:any=[];
 
-    curr_op_low=null;
-    curr_op_high=null;
     
     onRowClicked(row:any){
-      this.rowclick=true;
+      // this.rowclick=true;
      
 
 
         if(this.editflag)
         {
+          this.rowclick=true;
+
           let index = this.selectedRow.findIndex((sel_row: { sensor_name: string }) => sel_row.sensor_name === row.sensor_name);
          
          if(index==-1) this.selectedRow.push(row);
          else this.selectedRow.splice(index,1);
 
-         this.curr_op_low=row.operator_low;
-         this.curr_op_high=row.operator_high;
 
           console.log("selected row is : ",this.selectedRow);
         }
@@ -126,10 +123,12 @@ export class DisplayDataComponent implements OnInit {
       this.flag2 = false;
       this.editflag=false;
       this.submitFlag = false;
+      this.rowclick=false;
       if(this.selectedRow)
       {
         this.updateColumn(this.selectedRow);
       }
+
     }
 
     updateColumn(arr:any){
@@ -192,31 +191,6 @@ export class DisplayDataComponent implements OnInit {
 
   
 
-  // onUserInput(event:any,num:any){
-  //   let op_low=event.target.value;
-  //   console.log('valid b4 if',this.valid);
-    
-  //   if(op_low>num){
-  //     this.valid=false;
-  //   }
-  //   console.log("op_low and op_high",op_low,num);
-  //   console.log('valid after if',this.valid);
- 
-  // }
-
-  // validateInput(value1:any,value2:any)
-  // {
-  //   if(typeof(value1)!='string' && typeof(value2)!='string' )
-  //   {
-  //     return (value1>value2);
-
-  //   }
-  //   else return false;
-  // }
-
-  // value1:number=0;
-  // value2:number=0;
-
   valid:boolean=false;
 
   onInput(value1:any,value2:any){
@@ -226,7 +200,6 @@ export class DisplayDataComponent implements OnInit {
     
   }
 
-  inputcheck:boolean=true;
 
   test(element: any){
   let check= element.operator_low > element.operator_high;
