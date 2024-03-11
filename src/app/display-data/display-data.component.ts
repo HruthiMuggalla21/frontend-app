@@ -39,7 +39,7 @@ export class DisplayDataComponent implements OnInit {
   ngOnInit(): void{
   this.apiService.getData().subscribe((dataFrom: Elements[]) => {
     this.dataSource=new MatTableDataSource<Elements>(dataFrom);
-    console.log(this.dataSource.data);
+    console.log("DS at t=0 ",this.dataSource.data);
     this.dataSource.sort=this.sort;
     this.dataSource.paginator=this.paginator;
     this.cloned_dataSource=cloneDeep(this.dataSource);
@@ -139,6 +139,9 @@ export class DisplayDataComponent implements OnInit {
       {
         this.updateColumn(this.selectedRow);
       }
+
+      console.log('DS after submit clicked ', this.dataSource.data);
+      
 
     }
 
