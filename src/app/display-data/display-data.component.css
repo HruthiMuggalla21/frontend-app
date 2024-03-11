@@ -87,6 +87,7 @@ th {
 }
 .add-button, .edit-button, .cancel-button, .submit-button {
     margin-top: 15px;
+    margin-right:10px;
     padding:10px 30px 10px 30px;
     cursor: pointer;
 
@@ -106,13 +107,14 @@ th {
    background-color: #292929;
 }
 .mat-mdc-raised-button.cancel-button {
-    
+    padding:10px 30px 10px 30px;
     color: white;
     border: 2px solid grey;
     background-color: #292929;
 }
 .mat-mdc-raised-button.submit-button{
    margin-right: 10px;
+   padding:10px 30px 10px 30px;
     color: white;
    border: 2px solid grey;
    background-color: #147D64;
@@ -128,23 +130,59 @@ th {
    background-color: grey;
 }
 
-.slider-background{
-    .mat-mdc-slide-toggle {
-        background-color: #02A783;
-          
-      }
-      
+.mat-mdc-slide-toggle {
+    --mdc-switch-selected-handle-color: #121212;
+    --mdc-switch-unselected-handle-color: #121212;
+    --mdc-switch-selected-hover-handle-color: #121212;
+    --mdc-switch-selected-pressed-handle-color: #121212;
+    --mdc-switch-selected-focus-handle-color: #121212;
 }
-.mdc-switch .mdc-switch__track{
-    background-color: #02A783;
+.slider-toggle{
+    
 
-}
- .slider-background{
-    .mdc-switch__track::after{
-        background-color: #02A783;
+    .mat-mdc-slide-toggle[_ngcontent-ng-c1361348047]{
+        background-color: transparent;
     }
+    .mdc-switch.mdc-switch:disabled .mdc-switch__icon{
+        fill:none;
+        border:none;
+        color:#121212;
+    }
+    
+    .mat-mdc-slide-toggle .mdc-form-field{
+        background-color: grey;
+        border-radius: 20px;
+    }
+    
+    .mdc-switch:enabled .mdc-switch__track::after{
+        background: #02A783 !important;
+    
+    }
+    .mdc-switch:enabled .mdc-switch__track::before{
+        background: grey !important;
+    
+    }
+    .mdc-switch__icon{
+        background: #121212;
+        border-radius: 20px;
+        transition:#121212;
+        
+    }
+    .mdc-switch__icon:hover{
+       transform: none;
+        
+    }
+    .mdc-switch.mdc-switch:enabled .mdc-switch__icon{
+        fill: none;
+       
+    }
+}
 
- }
+.slider-toggle:hover {
+    transform:scale(1);
+    
+}
+
 .edit-box {
     padding: 10px;
     margin: 0;
@@ -181,39 +219,47 @@ input.mat-raised-button.mat-primary{
     color: white;
 }
 
-::ng-deep.paginator-additional{
 
-    .mat-mdc-paginator-icon:disabled {
-        fill: red !important;
-    }
-    
-}
 ::ng-deep.paginator-additional{
 
     .mat-mdc-paginator-icon {
-        fill: #FFFFFF !important;
+        fill: #FFFFFF ;
+        
     }
     
 }
-.paginator {
+ .paginator-additional {
     display:flex;
+    justify-content: space-between;
+    align-items:center;
     flex-direction:row;
-    justify-content: flex-start;
+    margin-left: auto; 
     color: #FFFFFF;
+    background-color: #414141;
     
+}
+.mat-mdc-paginator-navigation {
+    margin-left: auto; 
 }
 
 ::ng-deep .mat-mdc-paginator-page-size-label{
     color: #FFFFFF;
 }
 
-::ng-deep .mat-mdc-paginator-range-actions{
+::ng-deep .mat-mdc-paginator-outer-container {
+    background-color: #414141;
     color: #FFFFFF;
 }
 
-::ng-deep .mat-mdc-paginator-outer-container {
-    background-color: #414141;
-    color: #121212;
+::ng-deep .mat-mdc-text-field-wrapper {
+    border-bottom: 1px solid white;
+    
+}
+.paginator{
+    ::ng-deep .mat-mdc-text-field--outlined{
+        --mdc-outlined-text-field-outline-width: 0px;
+    }
+    
 }
 
 
@@ -226,8 +272,23 @@ input.mat-raised-button.mat-primary{
     bottom: 0px;
     position: sticky;
     z-index: 10;
-  }
 
+    .mat-mdc-select{
+        color: #FFFFFF;
+    }
+    .mat-mdc-text-field--outlined{
+        --mdc-outlined-text-field-outline-width: 0px;
+
+    }
+   
+}
+
+  /* .paginator-additional{
+    .mat-mdc-text-field--outlined{
+        --mdc-outlined-text-field-outline-width: 0px;
+
+    }
+  } */
   .disabled-input{
     border: 2px solid #717171;
     color: #717171;
@@ -238,3 +299,11 @@ input.mat-raised-button.mat-primary{
     -webkit-appearance: none;
     margin: 0;
 }
+
+/* .mat-mdc-paginator{
+
+::ng-deep .mat-mdc-paginator-page-size-select{
+    border: 0px 0px 1px 0px solid red;
+}
+} */
+

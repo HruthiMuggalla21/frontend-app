@@ -2,10 +2,16 @@
 .dialog-box {
     background-color: 	#C0C0C0;
     text-align: center;
+    /* width: 50%; */
     
 }
+.dialog-content{
+    width: 300px;
+}
+
 .mat-mdc-dialog-title{
     color: black;
+    
 }
 mat-label {
     color: black;
@@ -15,11 +21,14 @@ mat-label {
 .actions {
     display:flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
-button {
-    color: rgb(150, 84, 84);
-    border: 1px solid grey;
-    background-color: red;
-    border-radius: 10px;
+
+.mat-mdc-raised-button.action-button:hover {
+    color: black;
+   background-color: grey;
+}
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
