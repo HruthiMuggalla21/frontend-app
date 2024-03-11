@@ -37,7 +37,8 @@
           size="small"
           color="primary"
           [checked]="element.use_in_optimization"
-          disabled="true">
+          [disabled]="!flag2"
+          (change) = "onToggleChange(element, $event)">
 
       </mat-slide-toggle>
 
