@@ -13,7 +13,7 @@ const model = {
     },
 
     getData: async() => {
-        const query = 'SELECT * FROM sensor_data';
+        const query = 'SELECT * FROM sensor_data order by sensor_name asc';
         const result = await pool.query(query);
         return result.rows;
     },
