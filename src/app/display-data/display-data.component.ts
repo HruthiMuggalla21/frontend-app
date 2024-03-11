@@ -8,6 +8,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { CreateRecordComponent } from '../create-record/create-record.component';
 import { ApiService } from '../api.service';
 import {cloneDeep} from 'lodash';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 // import { MaterialModule } from '../material/material.module';
 
@@ -178,7 +179,11 @@ export class DisplayDataComponent implements OnInit {
 
     }
    
+    onToggleChange(element:any, event:MatSlideToggleChange) {
+      element.use_in_optimization = event.checked;
+    }
    
+    
 
   openCreateDialog() {
     console.log('open dialog called')
@@ -214,7 +219,18 @@ export class DisplayDataComponent implements OnInit {
   test(element: any){
   let check= element.operator_low > element.operator_high;
   // this.inputcheck=!check;
+  // if(!this.editflag) {
+  //   return 'disabled-row';
+  // }
+  // else if (element.use_in_optimization){
+  //   return 'enabled-row';
+  // }
+  // else {
+  //   return 'disabled-row';
+  // }
+
    return check;
+   
   }
 
   validateInput(element:any)
