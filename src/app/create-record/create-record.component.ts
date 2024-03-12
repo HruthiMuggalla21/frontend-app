@@ -1,9 +1,12 @@
 import { Component, OnInit, Inject} from '@angular/core';
-import { FormGroup, Validators,FormBuilder} from '@angular/forms';
+import { FormGroup, Validators,FormBuilder, ValidatorFn} from '@angular/forms';
 import { AbstractControl, ValidationErrors } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {ApiService} from '../api.service';
 import { Elements } from '../elements';
+
+
+
 @Component({
   // standalone:true,
   selector: 'app-create-record',
@@ -12,10 +15,14 @@ import { Elements } from '../elements';
   providers:[ApiService],
   // imports:[]
 })
+
+
+
 export class CreateRecordComponent implements OnInit{
   
   // data: any;
   createForm: FormGroup;
+   
 
   constructor(
     private createFormBuilder: FormBuilder, 
@@ -30,10 +37,10 @@ export class CreateRecordComponent implements OnInit{
       use_in_optimization: [false],
       current_value: [null],
       optimized_value: [null],
-      operator_low: [null],
-      operator_high: [null],
+      operator_low: ['', Validators.required],
+      operator_high: ['', Validators.required],
       status: [false]
-    });
+    }, {validators: this.rangeValidator });
     }
 
     textValidator(){
@@ -48,7 +55,19 @@ export class CreateRecordComponent implements OnInit{
         return null;
       }
     }
+    
+    // rangeValidator = (group:FormGroup) => {
+    //   const operatorLow=group.get('operator_low')?.value;
+    //   const operatorHigh=group.get('operator_high')?.value;
+    
+    //   return operatorLow <= operatorHigh ? null : { rangeError: true };
+    // }
+    rangeValidator(group: FormGroup): { [key: string]: boolean } | null {
+      const operatorLow = group.get('operator_low')?.value;
+      const operatorHigh = group.get('operator_high')?.value;
   
+      return operatorLow <= operatorHigh ? null : { rangeError: true };
+    }
   ngOnInit():void{
     
   }
