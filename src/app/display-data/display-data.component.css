@@ -293,7 +293,7 @@ input.mat-raised-button.mat-primary{
     background-color: #414141; 
     display: flex;
     /* background-color: green; */
-    color: #121212;
+    color: #FFFFFF;
     width: 100%;
 }
 
@@ -333,5 +333,6 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
 
 
