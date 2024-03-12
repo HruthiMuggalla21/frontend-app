@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject} from '@angular/core';
 import { FormGroup, Validators,FormBuilder} from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { AbstractControl, ValidationErrors } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {ApiService} from '../api.service';
 import { Elements } from '../elements';
@@ -24,8 +24,8 @@ export class CreateRecordComponent implements OnInit{
     public dialogRef: MatDialogRef<CreateRecordComponent>)
     {
     this.createForm = this.createFormBuilder.group({
-      sensor_name: ['', Validators.required],
-      description:[''],
+      sensor_name: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z0-9]*')]],
+      description:['', this.textValidator()],
       unit: [''],
       use_in_optimization: [false],
       current_value: [null],
@@ -34,6 +34,19 @@ export class CreateRecordComponent implements OnInit{
       operator_high: [null],
       status: [false]
     });
+    }
+
+    textValidator(){
+      return (control:AbstractControl):ValidationErrors | null => {
+        const value=control.value;
+        if(value && value.trim() ==='') {
+          return {required:true};
+        }
+        if(/^\d+$/.test(value)){
+          return {numericOnly:true};
+        }
+        return null;
+      }
     }
   
   ngOnInit():void{

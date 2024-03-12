@@ -32,7 +32,7 @@
   <ng-container matColumnDef="use_in_optimization">
     <th mat-header-cell *matHeaderCellDef> Use in Optimization </th>
     <td mat-cell *matCellDef="let element" [ngClass]="{'slider-background': flag2 && element.use_in_optimization}" >
-
+      <div class="slider-toggle">
         <mat-slide-toggle
           size="small"
           color="primary"
@@ -41,6 +41,8 @@
           (change) = "onToggleChange(element, $event)">
 
       </mat-slide-toggle>
+      </div>
+        
 
        </td>
   </ng-container>
