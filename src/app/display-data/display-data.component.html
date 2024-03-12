@@ -64,17 +64,17 @@
     <td mat-cell *matCellDef="let element" >
 
 
-      <div [ngClass]="test(element) && true ? 'error': ''" >
+      <div [ngClass]="test(element) && true ? 'error': ''" [ngClass]="{'orange-text': element.optimized_value === element.operator_low}" >
         <div [ngSwitch]="editflag">
 
           <div *ngSwitchCase="false">
-            <span  [ngClass]="{'orange-text': element.optimized_value === element.operator_low || element.optimized_value === element.operator_high}" >{{element.operator_low}}</span>
+            <span  [ngClass]="{'orange-text': element.optimized_value === element.operator_low}" >{{element.operator_low}}</span>
           </div>
 
-          <div *ngSwitchCase="true">
-            <div [ngSwitch]="element.use_in_optimization" >
+          <div *ngSwitchCase="true" >
+            <div [ngSwitch]="element.use_in_optimization" [ngClass]="{'orange-text': element.optimized_value === element.operator_low}" >
               <input type="number" *ngSwitchCase="true" class="edit-box"  matInput [value]="element.operator_low" 
-              [(ngModel)]="element.operator_low" placeholder="" (input)="validateInput(element)">
+              [(ngModel)]="element.operator_low" placeholder=""  (input)="validateInput(element)" >
 
               <input type="number" [ngClass]="{'disabled-input':true}" *ngSwitchCase="false" [disabled]="true" class="edit-box"  matInput [value]="element.operator_low" 
               [(ngModel)]="element.operator_low" placeholder="">
@@ -95,7 +95,7 @@
     <div [ngSwitch]="editflag">
 
       <div *ngSwitchCase="false">
-        <span  [ngClass]="{'orange-text': element.optimized_value === element.operator_low || element.optimized_value === element.operator_high}" >{{element.operator_high}}</span>
+        <span  [ngClass]="{'orange-text': element.optimized_value === element.operator_high}" >{{element.operator_high}}</span>
       </div>
 
       <div *ngSwitchCase="true">
@@ -104,7 +104,7 @@
           [(ngModel)]="element.operator_high" placeholder="" (input)="validateInput(element)">
 
           <input type="number" [ngClass]="{'disabled-input':true}" *ngSwitchCase="false" [disabled]="true" class="edit-box"  matInput [value]="element.operator_high" 
-          [(ngModel)]="element.operator_high" placeholder="">
+          [(ngModel)]="element.operator_high" placeholder="" [ngClass]="{'orange-text': 'equalsOpHigh'}">
         </div>
         </div>
       </div>
@@ -129,7 +129,8 @@
 </table>
 
 <div class="paginator-additional">
-  <mat-paginator [pageSizeOptions]="[5,10,15]" showFirstLastButtons aria-label="Select page " class="paginator" class="mat-paginator-sticky"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[5,10,15]" showFirstLastButtons aria-label="Select page" class="paginator mat-paginator-sticky" ></mat-paginator>
+  <div>Test Content</div>
 </div>
 
 

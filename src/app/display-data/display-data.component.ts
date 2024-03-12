@@ -221,26 +221,25 @@ export class DisplayDataComponent implements OnInit {
 
   test(element: any){
   let check= element.operator_low > element.operator_high;
-  // this.inputcheck=!check;
-  // if(!this.editflag) {
-  //   return 'disabled-row';
-  // }
-  // else if (element.use_in_optimization){
-  //   return 'enabled-row';
-  // }
-  // else {
-  //   return 'disabled-row';
-  // }
-
    return check;
    
   }
 
+  
+  equalsOpLow:boolean=false;
+  equalsOpHigh:boolean=false;
   validateInput(element:any)
   { 
-    console.log("current value of op_low is: ",element.operator_low)
-     let check= element.operator_low > element.operator_high;
+
+    let check= (element.operator_low > element.operator_high);
+    if(element.operator_low==element.optimized_value){
+      this.equalsOpLow=true;      
+    }
+    if(element.operator_high==element.optimized_value){
+      this.equalsOpHigh=true;
+    }
     this.inputcheck=!check;
+
      return this.inputcheck;
 
   }

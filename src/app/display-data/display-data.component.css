@@ -181,27 +181,54 @@ input.mat-raised-button.mat-primary{
     color: white;
 }
 
-::ng-deep.paginator-additional{
+/* ::ng-deep.paginator-additional{
 
     .mat-mdc-paginator-icon:disabled {
         fill: red !important;
     }
     
-}
+} */
 ::ng-deep.paginator-additional{
 
     .mat-mdc-paginator-icon {
-        fill: #FFFFFF !important;
+        fill: #FFFFFF ;
     }
+  
     
 }
+
 .paginator {
-    display:flex;
-    flex-direction:row;
-    justify-content: flex-start;
     color: #FFFFFF;
-    
+
+    .mat-mdc-form-field {
+        /* border-right: 1px solid #414141;
+        border-left: 1px solid #414141;
+        border-top: 1px solid #414141; */
+        border-bottom: 1px solid white;
+        
+        
+    }
+    .mat-mdc-select-arrow svg{
+        fill: lightgrey;
+    }
+    .mat-mdc-paginator-container{
+         display: flex;
+        justify-content: start;
+        
+        .mat-mdc-paginator-range-actions{}
+
+            /* width: 100%; */
+            /* flex-grow: 8; */
+            /* display: flex;
+            justify-content: space-between; */
+
+        
+    }
+
+
 }
+    
+
 
 ::ng-deep .mat-mdc-paginator-page-size-label{
     color: #FFFFFF;
@@ -209,11 +236,27 @@ input.mat-raised-button.mat-primary{
 
 ::ng-deep .mat-mdc-paginator-range-actions{
     color: #FFFFFF;
+    .mat-mdc-paginator-range-label{
+        /* background-color: green; */
+    }
 }
 
 ::ng-deep .mat-mdc-paginator-outer-container {
-    background-color: #414141;
+    background-color: #414141; 
+    display: flex;
+    /* background-color: green; */
     color: #121212;
+    width: 100%;
+}
+
+.mat-mdc-paginator-container {
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: flex-end; */
+    /* justify-content: space-between; */
+    padding: 10px;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 
@@ -238,3 +281,4 @@ input.mat-raised-button.mat-primary{
     -webkit-appearance: none;
     margin: 0;
 }
+
