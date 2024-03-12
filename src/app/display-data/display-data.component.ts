@@ -211,7 +211,9 @@ export class DisplayDataComponent implements OnInit {
 
   valid:boolean=false;
 
+
   
+
 
 
   test(element: any){

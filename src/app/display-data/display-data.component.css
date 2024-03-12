@@ -237,9 +237,9 @@ input.mat-raised-button.mat-primary{
     .mat-mdc-paginator-icon {
         fill: #FFFFFF ;
 
-
-
     }
+
+    
   
     
 }
@@ -261,15 +261,18 @@ input.mat-raised-button.mat-primary{
     }
     .mat-mdc-paginator-container{
          display: flex;
-        justify-content: space-between;
+        justify-content: start;
         
-       
 
-            /* width: 100%; */
-            /* flex-grow: 8; */
-           /* display: flex;
-            justify-content: space-between;
-        } */
+        
+        .mat-mdc-paginator-range-actions.button{
+
+            /* width: 100%; 
+            flex-grow: 8;
+           display: flex;
+            justify-content: start; */
+        }
+
 
         
     }
@@ -280,13 +283,19 @@ input.mat-raised-button.mat-primary{
 
 
 ::ng-deep .mat-mdc-paginator-page-size-label{
-    color: #FFFFFF;
+    color:#FFFFFF;
+    
 }
 
 ::ng-deep .mat-mdc-paginator-outer-container {
     background-color: #414141;
     color: #FFFFFF;
-    
+
+
+    .mat-mdc-paginator-range-label{
+        background-color: green;
+    }
+
 }
 
 ::ng-deep .mat-mdc-paginator-outer-container {
@@ -314,14 +323,14 @@ input.mat-raised-button.mat-primary{
 }
 
 
-.mat-paginator-sticky {
+/* .mat-paginator-sticky {
     bottom: 0px;
     position: sticky;
     z-index: 10;
     .mat-mdc-select{
         color: white;
     }
-  }
+  } */
 
   .disabled-input{
     border: 2px solid #717171;
