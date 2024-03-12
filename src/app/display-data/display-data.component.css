@@ -222,27 +222,60 @@ input.mat-raised-button.mat-primary{
 }
 
 
+/* ::ng-deep.paginator-additional{
+
+    .mat-mdc-paginator-icon:disabled {
+        fill: red !important;
+    }
+    
+} */
+
 ::ng-deep.paginator-additional{
 
     .mat-mdc-paginator-icon {
         fill: #FFFFFF ;
+
+
+
+    }
+  
+    
+}
+
+
+.paginator {
+    color: #FFFFFF;
+
+    .mat-mdc-form-field {
+        /* border-right: 1px solid #414141;
+        border-left: 1px solid #414141;
+        border-top: 1px solid #414141; */
+        border-bottom: 1px solid white;
+        
         
     }
+    .mat-mdc-select-arrow svg{
+        fill: lightgrey;
+    }
+    .mat-mdc-paginator-container{
+         display: flex;
+        justify-content: start;
+        
+        .mat-mdc-paginator-range-actions{}
+
+            /* width: 100%; */
+            /* flex-grow: 8; */
+            /* display: flex;
+            justify-content: space-between; */
+
+        
+    }
+
+
+}
     
-}
- .paginator-additional {
-    display:flex;
-    justify-content: space-between;
-    align-items:center;
-    flex-direction:row;
-    margin-left: auto; 
-    color: #FFFFFF;
-    background-color: #414141;
-    
-}
-.mat-mdc-paginator-navigation {
-    margin-left: auto; 
-}
+
+
 
 ::ng-deep .mat-mdc-paginator-page-size-label{
     color: #FFFFFF;
@@ -251,18 +284,30 @@ input.mat-raised-button.mat-primary{
 ::ng-deep .mat-mdc-paginator-outer-container {
     background-color: #414141;
     color: #FFFFFF;
+    .mat-mdc-paginator-range-label{
+        /* background-color: green; */
+    }
 }
 
-::ng-deep .mat-mdc-text-field-wrapper {
-    border-bottom: 1px solid white;
-    
+
+::ng-deep .mat-mdc-paginator-outer-container {
+    background-color: #414141; 
+    display: flex;
+    /* background-color: green; */
+    color: #121212;
+    width: 100%;
 }
-/* .paginator{
-    ::ng-deep .mat-mdc-text-field--outlined{
-        --mdc-outlined-text-field-outline-width: 0px;
-    }
-    
-} */
+
+.mat-mdc-paginator-container {
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: flex-end; */
+    /* justify-content: space-between; */
+    padding: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+
+}
 
 
 .red-border{
@@ -297,10 +342,4 @@ input.mat-raised-button.mat-primary{
     margin: 0;
 }
 
-/* .mat-mdc-paginator{
-
-::ng-deep .mat-mdc-paginator-page-size-select{
-    border: 0px 0px 1px 0px solid red;
-}
-} */
 
