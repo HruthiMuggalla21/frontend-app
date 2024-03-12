@@ -149,7 +149,10 @@ th {
         color:#121212;
         
     }
-    
+    .mat-mdc-slide-toggle {
+        height:0;
+        width:0;
+    }
     .mat-mdc-slide-toggle .mdc-form-field{
         
         background:grey;
@@ -260,6 +263,7 @@ input.mat-raised-button.mat-primary{
          display: flex;
         justify-content: start;
         
+
         
         .mat-mdc-paginator-range-actions.button{
 
@@ -268,6 +272,7 @@ input.mat-raised-button.mat-primary{
            display: flex;
             justify-content: start; */
         }
+
 
         
     }
@@ -286,9 +291,11 @@ input.mat-raised-button.mat-primary{
     background-color: #414141;
     color: #FFFFFF;
 
+
     .mat-mdc-paginator-range-label{
         background-color: green;
     }
+
 }
 
 ::ng-deep .mat-mdc-paginator-outer-container {
@@ -329,9 +336,9 @@ input.mat-raised-button.mat-primary{
     border: 2px solid #717171;
     color: #717171;
 
-  }
+}
 
-  input::-webkit-inner-spin-button {
+input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
