@@ -147,11 +147,14 @@ th {
         fill:none;
         border:none;
         color:#121212;
+        
     }
     
     .mat-mdc-slide-toggle .mdc-form-field{
-        background-color: grey;
-        border-radius: 20px;
+        
+        background:grey;
+        border-radius: 50px;
+        width: 35px;
     }
     
     .mdc-switch:enabled .mdc-switch__track::after{
@@ -162,11 +165,10 @@ th {
         background: grey !important;
     
     }
-    .mdc-switch__icon{
-        background: #121212;
-        border-radius: 20px;
-        transition:#121212;
-        
+    
+    .mdc-switch{
+        --mdc-switch-handle-height: 12px;
+        --mdc-switch-handle-width: 12px;
     }
     .mdc-switch__icon:hover{
        transform: none;
