@@ -55,8 +55,14 @@ th {
     color: #02A783;
 }
 .orange-text {
+    .mat-mdc-input-element{
+        color: #E87516;
+    }
     color: #E87516;
+
 }
+
+
 .grey-text {
     color: grey;
 }
@@ -246,7 +252,8 @@ input.mat-raised-button.mat-primary{
 
 
 .paginator {
-    color: #FFFFFF;
+    /* color: #FFFFFF; */
+    /* color: red; */
 
     .mat-mdc-form-field {
         /* border-right: 1px solid #414141;
@@ -261,20 +268,8 @@ input.mat-raised-button.mat-primary{
     }
     .mat-mdc-paginator-container{
          display: flex;
-        justify-content: start;
-        
-
-        
-        .mat-mdc-paginator-range-actions.button{
-
-            /* width: 100%; 
-            flex-grow: 8;
-           display: flex;
-            justify-content: start; */
-        }
-
-
-        
+        justify-content: space-between;
+         
     }
 
 
@@ -283,6 +278,7 @@ input.mat-raised-button.mat-primary{
 
 
 ::ng-deep .mat-mdc-paginator-page-size-label{
+    /* for items per page color */
     color:#FFFFFF;
     
 }
@@ -293,7 +289,8 @@ input.mat-raised-button.mat-primary{
 
 
     .mat-mdc-paginator-range-label{
-        background-color: green;
+        /* background-color: green; */
+        color: white;
     }
 
 }
@@ -306,16 +303,7 @@ input.mat-raised-button.mat-primary{
     width: 100%;
 }
 
-.mat-mdc-paginator-container {
-    /* display: flex; */
-    /* align-items: center; */
-    /* justify-content: flex-end; */
-    /* justify-content: space-between; */
-    padding: 10px;
-    flex-wrap: wrap;
-    width: 100%;
 
-}
 
 
 .red-border{
@@ -323,14 +311,12 @@ input.mat-raised-button.mat-primary{
 }
 
 
-/* .mat-paginator-sticky {
-    bottom: 0px;
-    position: sticky;
-    z-index: 10;
+.mat-paginator-sticky {
+
     .mat-mdc-select{
         color: white;
     }
-  } */
+  }
 
   .disabled-input{
     border: 2px solid #717171;
@@ -341,6 +327,13 @@ input.mat-raised-button.mat-primary{
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+
+::ng-deep .mat-mdc-paginator-range-label {
+    color: white !important;
+    position: absolute !important;
+    left: 210px !important;
 }
 
 
