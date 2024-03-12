@@ -67,6 +67,7 @@
 
 
       <div [ngClass]="test(element) && true ? 'error': ''" [ngClass]="{'orange-text': element.optimized_value === element.operator_low}" >
+        <!-- <div [ngClass]="{'error': test(element) && true, 'orange-text': test(element) && element.optimized_value === element.operator_low}"> -->
         <div [ngSwitch]="editflag">
 
           <div *ngSwitchCase="false">

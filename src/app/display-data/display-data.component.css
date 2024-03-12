@@ -149,7 +149,10 @@ th {
         color:#121212;
         
     }
-    
+    .mat-mdc-slide-toggle[_ngcontent-ng-c641133785] {
+        height:0;
+        width:0;
+    }
     .mat-mdc-slide-toggle .mdc-form-field{
         
         background:grey;
@@ -261,7 +264,7 @@ input.mat-raised-button.mat-primary{
          display: flex;
         justify-content: start;
         
-        .mat-mdc-paginator-range-actions{}
+       
 
             /* width: 100%; */
             /* flex-grow: 8; */
@@ -284,9 +287,7 @@ input.mat-raised-button.mat-primary{
 ::ng-deep .mat-mdc-paginator-outer-container {
     background-color: #414141;
     color: #FFFFFF;
-    .mat-mdc-paginator-range-label{
-        /* background-color: green; */
-    }
+    
 }
 
 
@@ -329,15 +330,13 @@ input.mat-raised-button.mat-primary{
     }
    
 }
-
-  
-  .disabled-input{
+.disabled-input{
     border: 2px solid #717171;
     color: #717171;
 
-  }
+}
 
-  input::-webkit-inner-spin-button {
+input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
