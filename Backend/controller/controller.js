@@ -31,6 +31,7 @@ const controller = {
         
         try {
            const editDataArray = req.body;
+           console.log('from controller ',editDataArray);
            const editedRows = await service.editData(editDataArray);
            res.status(200).json(editedRows);
         } catch (error) {

@@ -211,12 +211,7 @@ export class DisplayDataComponent implements OnInit {
 
   valid:boolean=false;
 
-  onInput(value1:any,value2:any){
-    this.valid=value1<value2;
-    console.log('input....', typeof(value1),value1,value2);// we are getting the updated op_low and op_high;
-    return this.valid;
-    
-  }
+  
 
 
   test(element: any){
