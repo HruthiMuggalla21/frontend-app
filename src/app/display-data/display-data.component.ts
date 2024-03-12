@@ -211,30 +211,25 @@ export class DisplayDataComponent implements OnInit {
 
   valid:boolean=false;
 
+
   
+
 
 
   test(element: any){
   let check= element.operator_low > element.operator_high;
+  
    return check;
    
   }
 
   
-  equalsOpLow:boolean=false;
-  equalsOpHigh:boolean=false;
+
   validateInput(element:any)
   { 
 
     let check= (element.operator_low > element.operator_high);
-    if(element.operator_low==element.optimized_value){
-      this.equalsOpLow=true;      
-    }
-    if(element.operator_high==element.optimized_value){
-      this.equalsOpHigh=true;
-    }
     this.inputcheck=!check;
-
      return this.inputcheck;
 
   }
