@@ -232,8 +232,7 @@ input.mat-raised-button.mat-primary{
     }
     
 } */
-
-::ng-deep.paginator-additional{
+:host ::ng-deep.paginator-additional{
 
     .mat-mdc-paginator-icon {
         fill: #FFFFFF ;
@@ -262,14 +261,15 @@ input.mat-raised-button.mat-primary{
     }
     .mat-mdc-paginator-container{
          display: flex;
-        justify-content: start;
+        justify-content: space-between;
         
        
 
             /* width: 100%; */
             /* flex-grow: 8; */
-            /* display: flex;
-            justify-content: space-between; */
+           /* display: flex;
+            justify-content: space-between;
+        } */
 
         
     }
@@ -277,7 +277,6 @@ input.mat-raised-button.mat-primary{
 
 }
     
-
 
 
 ::ng-deep .mat-mdc-paginator-page-size-label{
@@ -289,7 +288,6 @@ input.mat-raised-button.mat-primary{
     color: #FFFFFF;
     
 }
-
 
 ::ng-deep .mat-mdc-paginator-outer-container {
     background-color: #414141; 
@@ -320,17 +318,12 @@ input.mat-raised-button.mat-primary{
     bottom: 0px;
     position: sticky;
     z-index: 10;
-
     .mat-mdc-select{
-        color: #FFFFFF;
+        color: white;
     }
-    .mat-mdc-text-field--outlined{
-        --mdc-outlined-text-field-outline-width: 0px;
+  }
 
-    }
-   
-}
-.disabled-input{
+  .disabled-input{
     border: 2px solid #717171;
     color: #717171;
 

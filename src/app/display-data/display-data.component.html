@@ -66,8 +66,7 @@
     <td mat-cell *matCellDef="let element" >
 
 
-      <div [ngClass]="test(element) && true ? 'error': ''" [ngClass]="{'orange-text': element.optimized_value === element.operator_low}" >
-        <!-- <div [ngClass]="{'error': test(element) && true, 'orange-text': test(element) && element.optimized_value === element.operator_low}"> -->
+      <div [ngClass]="test(element) && true ? 'error': ''" >
         <div [ngSwitch]="editflag">
 
           <div *ngSwitchCase="false">
@@ -133,7 +132,7 @@
 
 <div class="paginator-additional">
   <mat-paginator [pageSizeOptions]="[5,10,15]" showFirstLastButtons aria-label="Select page" class="paginator mat-paginator-sticky" ></mat-paginator>
-  <div>Test Content</div>
+  <!-- <div>Test Content</div> -->
 </div>
 
 
