@@ -1,23 +1,24 @@
 <div class="dialog-box">
     <h2 mat-dialog-title>Create New Record</h2>
-    <mat-dialog-content>
-        <form [formGroup]="createForm">
+    <mat-dialog-content class="content">
+        <form [formGroup]="createForm" >
 
-            <mat-form-field>
+            <mat-form-field class="dialog-content" >
                 <mat-label>Sensor Name</mat-label>
-                <input matInput formControlName="sensor_name"  required>
+                <input matInput formControlName="sensor_name"   pattern="[a-ZA-Z0-9]*" name="sensor_name"  required>
                 <mat-error  *ngIf="createForm.get('sensor_name')?.hasError('required')">This field is required</mat-error>
-                <mat-error *ngIf="createForm.get('sensor_name')?.hasError('pattern')">Cannot enter 0</mat-error>
+                <mat-error *ngIf="createForm.get('sensor_name')?.hasError('pattern')">Please enter only alphanumeric characters</mat-error>
             </mat-form-field>
 
             <br/>
-            <mat-form-field>
+            <mat-form-field class="dialog-content" >
                 <mat-label>Description</mat-label>
                 <textarea matInput formControlName="description"></textarea>
+                <mat-error *ngIf="createForm.get('description')?.hasError('pattern')">Please enter only alphanumeric characters</mat-error>
             </mat-form-field>
 
             <br/>     
-            <mat-form-field>
+            <mat-form-field class="dialog-content" >
                 <mat-label>Unit</mat-label>
                 <input matInput formControlName="unit"/>
             </mat-form-field>
@@ -27,25 +28,25 @@
             <mat-slide-toggle></mat-slide-toggle>
 
             <br/><br/> 
-            <mat-form-field>
+            <mat-form-field class="dialog-content" >
                 <mat-label>Current Value</mat-label>
                 <input matInput type="number" formControlName="current_value"/>
             </mat-form-field>
 
             <br/>
-            <mat-form-field>
+            <mat-form-field class="dialog-content" >
                 <mat-label>Optimized Value</mat-label>
                 <input matInput type="number" formControlName="optimized_value"/>
             </mat-form-field>
 
             <br/>
-            <mat-form-field>
+            <mat-form-field class="dialog-content" >
                 <mat-label>Operator Low</mat-label>
                 <input matInput type="number" formControlName="operator_low"/>
             </mat-form-field>
 
             <br/>
-            <mat-form-field>
+            <mat-form-field class="dialog-content" >
                 <mat-label>Operator High</mat-label>
                 <input matInput type="number" formControlName="operator_high"/>
             </mat-form-field>
@@ -59,8 +60,8 @@
         </form>
     </mat-dialog-content>
     <mat-dialog-actions class="actions">
-        <button mat-raised-button (click)="onCancelClick()">Cancel</button>
-        <button mat-raised-button (click)="onSaveClick()">Save</button>
+        <button class="action-button"mat-raised-button (click)="onCancelClick()">Cancel</button>
+        <button  class="action-button"mat-raised-button (click)="onSaveClick()">Save</button>
     </mat-dialog-actions>
 </div>
     

@@ -192,7 +192,7 @@ export class DisplayDataComponent implements OnInit {
     console.log('open dialog called')
     const dialogRef = this.dialog.open(CreateRecordComponent, 
       {
-      width: '500px',
+      width: '400px',
       // panelClass: 'my-custom-dialog',
     });
 
