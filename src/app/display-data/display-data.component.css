@@ -257,12 +257,12 @@ input.mat-raised-button.mat-primary{
     border-bottom: 1px solid white;
     
 }
-.paginator{
+/* .paginator{
     ::ng-deep .mat-mdc-text-field--outlined{
         --mdc-outlined-text-field-outline-width: 0px;
     }
     
-}
+} */
 
 
 .red-border{
@@ -285,12 +285,7 @@ input.mat-raised-button.mat-primary{
    
 }
 
-  /* .paginator-additional{
-    .mat-mdc-text-field--outlined{
-        --mdc-outlined-text-field-outline-width: 0px;
-
-    }
-  } */
+  
   .disabled-input{
     border: 2px solid #717171;
     color: #717171;
