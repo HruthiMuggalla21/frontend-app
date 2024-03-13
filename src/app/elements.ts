@@ -1,4 +1,5 @@
 export interface Elements{
+    sensor_id:number,
     sensor_name: string;
     description: string;
     unit: string;

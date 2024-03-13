@@ -77,11 +77,13 @@
             <div *ngSwitchCase="true">
 
             <div [ngSwitch]="element.use_in_optimization" >
-              <input type="number" *ngSwitchCase="true" class="edit-box"  matInput [value]="element.operator_low" 
-              [(ngModel)]="element.operator_low" placeholder=""  (input)="validateInput(element)" >
+              <!-- <input type="number" *ngSwitchCase="true" class="edit-box"  matInput [value]="element.operator_low" 
+              [(ngModel)]="element.operator_low" placeholder=""  (input)="validateInput(element)" (keydown.backspace)="handleBackspace($event)"> -->
+              <input type="text" inputmode="numeric" pattern="[0-9.]" *ngSwitchCase="true" class="edit-box"  matInput [value]="element.operator_low" 
+              [(ngModel)]="element.operator_low" placeholder=""  (input)="validateInput(element)"/>
 
               <input type="number" [ngClass]="{'disabled-input':true}" *ngSwitchCase="false" [disabled]="true" class="edit-box"  matInput [value]="element.operator_low" 
-              [(ngModel)]="element.operator_low" placeholder="">
+              [(ngModel)]="element.operator_low" placeholder="" >
             </div>
             </div>
           </div>
@@ -118,7 +120,7 @@
   </ng-container>
 
   <ng-container matColumnDef="status">
-    <th mat-header-cell *matHeaderCellDef>Status </th>
+    <th mat-header-cell *matHeaderCellDef class="status">Status </th>
     <td mat-cell *matCellDef="let element">
       
       <mat-icon [ngClass]="element.status==true? 'class1': 'class2'">circle</mat-icon>

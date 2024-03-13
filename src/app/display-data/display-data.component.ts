@@ -9,28 +9,27 @@ import { CreateRecordComponent } from '../create-record/create-record.component'
 import { ApiService } from '../api.service';
 import {cloneDeep} from 'lodash';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-
-// import { MaterialModule } from '../material/material.module';
-
+import { HostListener } from '@angular/core';
 
 @Component({
-  // standalone:true,
   selector: 'app-display-data',
   templateUrl: './display-data.component.html',
   styleUrls: ['./display-data.component.css'],
-  // imports:[ MatPaginatorModule, MatSortModule]
 })
 
-
 export class DisplayDataComponent implements OnInit {
+  
   title = 'materialApp';
   color='grey';
   slideToggleState: boolean = true;
   
+  
   @ViewChild(MatPaginator) paginator!:MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   
-  constructor(private dialog: MatDialog, private apiService: ApiService){}
+  constructor(private dialog: MatDialog, private apiService: ApiService, ){
+   
+  }
 
   dataSource: MatTableDataSource<Elements>=new MatTableDataSource<Elements>();
   cloned_dataSource: MatTableDataSource<Elements>=new MatTableDataSource<Elements>();
@@ -67,6 +66,7 @@ export class DisplayDataComponent implements OnInit {
     editflag:boolean=false;
     flag2:boolean=false;
     submitFlag:boolean = false;
+
 
     rowclick:boolean=false;
     inputcheck:boolean=true;
@@ -105,10 +105,9 @@ export class DisplayDataComponent implements OnInit {
           this.rowclick=true;
           this.selectedRow.push(row);
 
-        //   let index = this.selectedRow.findIndex((sel_row: { sensor_name: string }) => sel_row.sensor_name === row.sensor_name);
-         
-        //  if(index==-1) this.selectedRow.push(row);
-        //  else this.selectedRow.splice(index,1);
+
+        this.selectedRow.push(row);
+
 
 
           console.log("selected row is : ",this.selectedRow);
@@ -131,6 +130,7 @@ export class DisplayDataComponent implements OnInit {
         
         this.updateColumn(this.selectedRow);
       }
+      this.dataSource.sort = this.sort;
 
     
 
@@ -172,9 +172,13 @@ export class DisplayDataComponent implements OnInit {
 
       if(obj)
       {
+
           let indexToUpdate = this.dataSource.data.findIndex(item => item.sensor_name=== obj.sensor_name);
          
           console.log("before updating ds ",this.dataSource.data);
+
+         
+
 
           this.dataSource.data[indexToUpdate].operator_low = obj.operator_low;
           this.dataSource.data[indexToUpdate].operator_high = obj.operator_high;
@@ -208,6 +212,9 @@ export class DisplayDataComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        this.dataSource.data.push(result);
+        this.dataSource.data= Object.assign([], this.dataSource.data);
+        
         console.log('Data successfully added',result);
 
         this.dataSource.data.push(result);
@@ -219,6 +226,16 @@ export class DisplayDataComponent implements OnInit {
     
   };
 
+  
+  @HostListener('keydown', ['$event']) onKeyDown(event: KeyboardEvent) {
+    const char = event.key;
+    const regex = /[0-9.]/;
+    if (!regex.test(char) && char !== 'Backspace') {
+      event.preventDefault();
+    }
+  }
+  
+
 
   valid:boolean=false;
 
@@ -228,8 +245,6 @@ export class DisplayDataComponent implements OnInit {
    return check;
    
   }
-
-  
 
   validateInput(element:any)
   { 

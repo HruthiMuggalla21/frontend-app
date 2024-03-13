@@ -32,3 +32,32 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+.slider-toggle {
+    .mdc-switch:enabled .mdc-switch__track::after{
+        background:green;
+    }
+    .mdc-switch.mdc-switch--selected:enabled .mdc-switch__icon, .mdc-switch.mdc-switch--unselected:enabled .mdc-switch__icon{
+        fill: none;
+        background-color: black;
+    border-radius: 50px;
+    height: 20px;
+    width: 20px
+    }
+}
+
+.good-status-button{
+    .mat-mdc-radio-button.mat-accent{
+        --mdc-radio-selected-icon-color: #02A783;
+        --mdc-radio-selected-hover-icon-color: #02A783;
+        --mat-radio-checked-ripple-color:#02A783;
+    }
+}
+
+.bad-status-button{
+    .mat-mdc-radio-button.mat-accent{
+        --mdc-radio-selected-icon-color: #f3a90b;
+        --mdc-radio-selected-hover-icon-color: #f3a90b;
+        --mat-radio-checked-ripple-color:#f3a90b;
+    }
+}

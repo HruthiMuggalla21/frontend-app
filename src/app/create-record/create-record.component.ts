@@ -1,9 +1,12 @@
 import { Component, OnInit, Inject} from '@angular/core';
-import { FormGroup, Validators,FormBuilder} from '@angular/forms';
+import { FormGroup, Validators,FormBuilder, ValidatorFn} from '@angular/forms';
 import { AbstractControl, ValidationErrors } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {ApiService} from '../api.service';
 import { Elements } from '../elements';
+
+
+
 @Component({
   // standalone:true,
   selector: 'app-create-record',
@@ -12,10 +15,14 @@ import { Elements } from '../elements';
   providers:[ApiService],
   // imports:[]
 })
+
+
+
 export class CreateRecordComponent implements OnInit{
   
   // data: any;
   createForm: FormGroup;
+   
 
   constructor(
     private createFormBuilder: FormBuilder, 
@@ -24,18 +31,20 @@ export class CreateRecordComponent implements OnInit{
     public dialogRef: MatDialogRef<CreateRecordComponent>)
     {
     this.createForm = this.createFormBuilder.group({
-      sensor_name: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z0-9]*')]],
+      sensor_name: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z0-9_]*')]],
       description:['', this.textValidator()],
       unit: [''],
       use_in_optimization: [false],
       current_value: [null],
       optimized_value: [null],
-      // operator_low: [null],
-      operator_low: ['',[Validators.required,]],
 
-      operator_high: [null],
+      operator_low: ['', Validators.required],
+      operator_high: ['', Validators.required],
+
       status: [false]
     });
+
+    
     }
 
     textValidator(){
@@ -51,19 +60,24 @@ export class CreateRecordComponent implements OnInit{
       }
     }
 
-    rangeValidator(){
-      return (control:AbstractControl):ValidationErrors | null => {
-        const value=control.value;
-        if(value && value.trim() ==='') {
-          return {required:true};
-        }
-        if(/^\d+$/.test(value)){
-          return {numericOnly:true};
-        }
-        return null;
-      }
-    }
-  
+    
+    
+    // rangeValidator(group: FormGroup): { [key: string]: boolean } | null {
+      // rangeValidator(): ValidatorFn {
+      //   return (control: AbstractControl): { [key: string]: any } | null => {
+      //     const operatorLow = this.createForm.get('operator_low')?.value;
+      //     const operatorHigh = this.createForm.get('operator_high')?.value;
+          
+      //     if (operatorLow !== undefined && operatorHigh !== undefined && operatorLow > operatorHigh) {
+      //       return { rangeError: true };
+      //     } 
+      //     else {
+      //       return null;
+      //     };
+      //   };
+      // }
+
+
   ngOnInit():void{
     
   }
@@ -73,6 +87,7 @@ export class CreateRecordComponent implements OnInit{
    
     if (this.createForm.valid){
       const addedData: Elements = {
+        sensor_id:this.createForm.value.sensor_id,
         sensor_name: this.createForm.value.sensor_name,
         description: this.createForm.value.description,
         unit: this.createForm.value.unit,
