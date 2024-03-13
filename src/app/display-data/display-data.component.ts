@@ -139,6 +139,7 @@ export class DisplayDataComponent implements OnInit {
       {
         this.updateColumn(this.selectedRow);
       }
+      this.dataSource.sort = this.sort;
 
       console.log('DS after submit clicked ', this.dataSource.data);
       
@@ -198,6 +199,7 @@ export class DisplayDataComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        this.dataSource.data= Object.assign([], this.dataSource.data);
         console.log('Data successfully added',result);
       }
     })  

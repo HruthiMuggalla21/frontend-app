@@ -24,8 +24,11 @@
             </mat-form-field>
 
             <br/>
-            <mat-label>Use in Optimization</mat-label>
-            <mat-slide-toggle></mat-slide-toggle>
+            <div class="slider-toggle">
+                <mat-label >Use in Optimization</mat-label>
+                <mat-slide-toggle></mat-slide-toggle>
+            </div>
+            
 
             <br/><br/> 
             <mat-form-field class="dialog-content" >
@@ -42,8 +45,9 @@
             <br/>
             <mat-form-field class="dialog-content" >
                 <mat-label>Operator Low</mat-label>
-                <input matInput type="number" formControlName="operator_low"/>
-                <mat-error *ngIf="createForm.hasError('rangeError')">Value should be less than operator high</mat-error>
+                <input matInput type="number" formControlName="operator_low" required/>
+                <mat-error  *ngIf="createForm.get('operator_low')?.hasError('required')">This field is required</mat-error>
+                <mat-error *ngIf="createForm.get('operator_low')?.hasError('rangeError')">Value should be less than operator high</mat-error>
                 
                 
             </mat-form-field>
@@ -51,17 +55,26 @@
             <br/>
             <mat-form-field class="dialog-content" >
                 <mat-label>Operator High</mat-label>
-                <input matInput type="number" formControlName="operator_high"/>
+                <input matInput type="number" formControlName="operator_high" required/>
+                <mat-error  *ngIf="createForm.get('operator_high')?.hasError('required')">This field is required</mat-error>
                 
                 
             </mat-form-field>
+            
 
             <br/>
-            <mat-label>Status</mat-label>
-            <mat-radio-group formControlName="status">
-                <mat-radio-button value="true">Good</mat-radio-button>
-                <mat-radio-button value="false">Bad</mat-radio-button>
+            
+                <mat-label>Status</mat-label>
+                <mat-radio-group formControlName="status">
+                <span class="good-status-button">
+                    <mat-radio-button  value="true">Good</mat-radio-button>
+                </span>
+                <span class="bad-status-button">
+                    <mat-radio-button value="false">Bad</mat-radio-button>
+                </span>
             </mat-radio-group>
+           
+            
         </form>
     </mat-dialog-content>
     <mat-dialog-actions class="actions">
