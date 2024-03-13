@@ -68,21 +68,12 @@ export class DisplayDataComponent implements OnInit {
     flag2:boolean=false;
     submitFlag:boolean = false;
 
-
-    two_way_bind:boolean=false;
-    // two_way_bind:boolean=false;
     rowclick:boolean=false;
     inputcheck:boolean=true;
 
 
-
-
-
-
-
     editButtonClicked(){
       this.editflag=true;
-      // this.flag2=!this.flag2;
       this.flag2 = true;
       this.submitFlag = true;
     }
@@ -109,18 +100,15 @@ export class DisplayDataComponent implements OnInit {
     
     onRowClicked(row:any){
 
-      // this.rowclick=true;
-     
-
-
         if(this.editflag)
         {
           this.rowclick=true;
+          this.selectedRow.push(row);
 
-          let index = this.selectedRow.findIndex((sel_row: { sensor_name: string }) => sel_row.sensor_name === row.sensor_name);
+        //   let index = this.selectedRow.findIndex((sel_row: { sensor_name: string }) => sel_row.sensor_name === row.sensor_name);
          
-         if(index==-1) this.selectedRow.push(row);
-         else this.selectedRow.splice(index,1);
+        //  if(index==-1) this.selectedRow.push(row);
+        //  else this.selectedRow.splice(index,1);
 
 
           console.log("selected row is : ",this.selectedRow);
@@ -130,6 +118,8 @@ export class DisplayDataComponent implements OnInit {
 
     submitClicked()
     {
+      console.log('submit called and curr val in selected row is ',this.selectedRow); 
+      
       // this.submitButtonClicked = false;
       this.flag2 = false;
       this.editflag=false;
@@ -137,8 +127,15 @@ export class DisplayDataComponent implements OnInit {
       this.rowclick=false;
       if(this.selectedRow)
       {
+        console.log('updateColumn from submit called and selected row is ',this.selectedRow); 
+        
         this.updateColumn(this.selectedRow);
       }
+
+    
+
+      this.dataSource.sort = this.sort;
+
 
       console.log('DS after submit clicked ', this.dataSource.data);
       
@@ -147,15 +144,22 @@ export class DisplayDataComponent implements OnInit {
 
     updateColumn(arr:any){
 
+      console.log('org updataColumn called with array ',arr); 
+      
+
       this.apiService.updateColumn(arr).subscribe((data)=>{
-        console.log("data in subscribe is ", data); 
-        console.log("before updating datasource",this.dataSource.data)
+        console.log("data in subscribe of updateColumn is ", data); 
 
         let n = data.length;
         for(let i=0;i<n;i++)
         {
+          console.log('updateDataSource called from updateColumn');
+          
           this.updateDataSource(data[i]);
         }
+
+        console.log('update ds skipped');
+        
         
       });
      
@@ -163,17 +167,23 @@ export class DisplayDataComponent implements OnInit {
 
     updateDataSource(obj:any)
     {
+      console.log('updateDatasource is called');
+
 
       if(obj)
       {
           let indexToUpdate = this.dataSource.data.findIndex(item => item.sensor_name=== obj.sensor_name);
-          console.log("from update source line : obj_low and obj_high",obj.operator_low ,obj.operator_high )
+         
+          console.log("before updating ds ",this.dataSource.data);
 
           this.dataSource.data[indexToUpdate].operator_low = obj.operator_low;
           this.dataSource.data[indexToUpdate].operator_high = obj.operator_high;
 
 
+          
           this.dataSource.data= Object.assign([], this.dataSource.data);
+
+
           console.log("After updating: datasource is ",this.dataSource.data);
           this.selectedRow=[];
 
@@ -199,22 +209,18 @@ export class DisplayDataComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log('Data successfully added',result);
+
+        this.dataSource.data.push(result);
+        this.dataSource.data= Object.assign([], this.dataSource.data);
+        console.log('ds after dialog closed',this.dataSource.data);
+
       }
     })  
     
   };
-  updateData(){
 
-  }
-
-  
 
   valid:boolean=false;
-
-
-  
-
-
 
   test(element: any){
   let check= element.operator_low > element.operator_high;

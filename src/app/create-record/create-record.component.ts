@@ -30,13 +30,28 @@ export class CreateRecordComponent implements OnInit{
       use_in_optimization: [false],
       current_value: [null],
       optimized_value: [null],
-      operator_low: [null],
+      // operator_low: [null],
+      operator_low: ['',[Validators.required,]],
+
       operator_high: [null],
       status: [false]
     });
     }
 
     textValidator(){
+      return (control:AbstractControl):ValidationErrors | null => {
+        const value=control.value;
+        if(value && value.trim() ==='') {
+          return {required:true};
+        }
+        if(/^\d+$/.test(value)){
+          return {numericOnly:true};
+        }
+        return null;
+      }
+    }
+
+    rangeValidator(){
       return (control:AbstractControl):ValidationErrors | null => {
         const value=control.value;
         if(value && value.trim() ==='') {

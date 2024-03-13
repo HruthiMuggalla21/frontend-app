@@ -43,6 +43,9 @@
             <mat-form-field class="dialog-content" >
                 <mat-label>Operator Low</mat-label>
                 <input matInput type="number" formControlName="operator_low"/>
+                <mat-error  *ngIf="createForm.get('sensor_name')?.hasError('required')">operator low should be less than operator high</mat-error>
+
+
             </mat-form-field>
 
             <br/>
