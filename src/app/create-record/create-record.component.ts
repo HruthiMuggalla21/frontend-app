@@ -42,13 +42,7 @@ export class CreateRecordComponent implements OnInit{
       status: [false]
     });
 
-    this.createForm.get('operator_low')?.valueChanges.subscribe(() => {
-      this.rangeValidator();
-    });
-
-    this.createForm.get('operator_high')?.valueChanges.subscribe(() => {
-      this.rangeValidator();
-    });
+    
     }
 
     textValidator(){
@@ -66,19 +60,20 @@ export class CreateRecordComponent implements OnInit{
     
     
     // rangeValidator(group: FormGroup): { [key: string]: boolean } | null {
-      rangeValidator(){
-      const operatorLow = this.createForm.get('operator_low')?.value;
-      const operatorHigh = this.createForm.get('operator_high')?.value;
-      
-      if( operatorLow > operatorHigh) {
-        this.createForm.setErrors({rangeError:true});
-      }
-      else {
-        this.createForm.setErrors(null);
-      }
-      // return operatorLow <= operatorHigh ? null : { rangeError: true };
-      // return null;
-    }
+      // rangeValidator(): ValidatorFn {
+      //   return (control: AbstractControl): { [key: string]: any } | null => {
+      //     const operatorLow = this.createForm.get('operator_low')?.value;
+      //     const operatorHigh = this.createForm.get('operator_high')?.value;
+          
+      //     if (operatorLow !== undefined && operatorHigh !== undefined && operatorLow > operatorHigh) {
+      //       return { rangeError: true };
+      //     } 
+      //     else {
+      //       return null;
+      //     };
+      //   };
+      // }
+
   ngOnInit():void{
     
   }
@@ -88,6 +83,7 @@ export class CreateRecordComponent implements OnInit{
    
     if (this.createForm.valid){
       const addedData: Elements = {
+        sensor_id:this.createForm.value.sensor_id,
         sensor_name: this.createForm.value.sensor_name,
         description: this.createForm.value.description,
         unit: this.createForm.value.unit,

@@ -47,7 +47,8 @@
                 <mat-label>Operator Low</mat-label>
                 <input matInput type="number" formControlName="operator_low" required/>
                 <mat-error  *ngIf="createForm.get('operator_low')?.hasError('required')">This field is required</mat-error>
-                <mat-error *ngIf="createForm.get('operator_low')?.hasError('rangeError')">Value should be less than operator high</mat-error>
+                <mat-error *ngIf="createForm?.hasError('rangeError')">Value should be less than operator high</mat-error>
+
                 
                 
             </mat-form-field>
@@ -79,7 +80,7 @@
     </mat-dialog-content>
     <mat-dialog-actions class="actions">
         <button class="action-button"mat-raised-button (click)="onCancelClick()">Cancel</button>
-        <button  class="action-button"mat-raised-button [disabled]="createForm.invalid"(click)="onSaveClick()">Save</button>
+        <button  class="action-button"mat-raised-button [disabled]="createForm.invalid || createForm.hasError('rangeError')"(click)="onSaveClick()">Save</button>
     </mat-dialog-actions>
 </div>
     
