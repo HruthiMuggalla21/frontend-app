@@ -31,7 +31,7 @@ export class CreateRecordComponent implements OnInit{
     public dialogRef: MatDialogRef<CreateRecordComponent>)
     {
     this.createForm = this.createFormBuilder.group({
-      sensor_name: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z0-9]*')]],
+      sensor_name: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z0-9_]*')]],
       description:['', this.textValidator()],
       unit: [''],
       use_in_optimization: [false],
@@ -40,7 +40,15 @@ export class CreateRecordComponent implements OnInit{
       operator_low: ['', Validators.required],
       operator_high: ['', Validators.required],
       status: [false]
-    }, {validators: this.rangeValidator });
+    });
+
+    this.createForm.get('operator_low')?.valueChanges.subscribe(() => {
+      this.rangeValidator();
+    });
+
+    this.createForm.get('operator_high')?.valueChanges.subscribe(() => {
+      this.rangeValidator();
+    });
     }
 
     textValidator(){
@@ -56,17 +64,20 @@ export class CreateRecordComponent implements OnInit{
       }
     }
     
-    // rangeValidator = (group:FormGroup) => {
-    //   const operatorLow=group.get('operator_low')?.value;
-    //   const operatorHigh=group.get('operator_high')?.value;
     
-    //   return operatorLow <= operatorHigh ? null : { rangeError: true };
-    // }
-    rangeValidator(group: FormGroup): { [key: string]: boolean } | null {
-      const operatorLow = group.get('operator_low')?.value;
-      const operatorHigh = group.get('operator_high')?.value;
-  
-      return operatorLow <= operatorHigh ? null : { rangeError: true };
+    // rangeValidator(group: FormGroup): { [key: string]: boolean } | null {
+      rangeValidator(){
+      const operatorLow = this.createForm.get('operator_low')?.value;
+      const operatorHigh = this.createForm.get('operator_high')?.value;
+      
+      if( operatorLow > operatorHigh) {
+        this.createForm.setErrors({rangeError:true});
+      }
+      else {
+        this.createForm.setErrors(null);
+      }
+      // return operatorLow <= operatorHigh ? null : { rangeError: true };
+      // return null;
     }
   ngOnInit():void{
     

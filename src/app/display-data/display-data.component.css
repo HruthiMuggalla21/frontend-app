@@ -329,9 +329,6 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-
-
-
 ::ng-deep .mat-mdc-paginator-range-label {
     color: white !important;
     position: absolute !important;
