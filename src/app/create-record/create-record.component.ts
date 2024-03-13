@@ -37,8 +37,10 @@ export class CreateRecordComponent implements OnInit{
       use_in_optimization: [false],
       current_value: [null],
       optimized_value: [null],
+
       operator_low: ['', Validators.required],
       operator_high: ['', Validators.required],
+
       status: [false]
     });
 
@@ -57,6 +59,7 @@ export class CreateRecordComponent implements OnInit{
         return null;
       }
     }
+
     
     
     // rangeValidator(group: FormGroup): { [key: string]: boolean } | null {
@@ -73,6 +76,7 @@ export class CreateRecordComponent implements OnInit{
       //     };
       //   };
       // }
+
 
   ngOnInit():void{
     
