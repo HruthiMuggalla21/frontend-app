@@ -85,9 +85,7 @@ export class DisplayDataComponent implements OnInit {
 
       this.submitFlag=false;
       this.rowclick=false;
-      
-
-      
+           
       this.dataSource=this.cloned_dataSource;
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
@@ -118,8 +116,6 @@ export class DisplayDataComponent implements OnInit {
     submitClicked()
     {
       console.log('submit called and curr val in selected row is ',this.selectedRow); 
-      
-      // this.submitButtonClicked = false;
       this.flag2 = false;
       this.editflag=false;
       this.submitFlag = false;
@@ -131,8 +127,6 @@ export class DisplayDataComponent implements OnInit {
         this.updateColumn(this.selectedRow);
       }
       this.dataSource.sort = this.sort;
-
-    
 
       this.dataSource.sort = this.sort;
 
@@ -177,14 +171,9 @@ export class DisplayDataComponent implements OnInit {
          
           console.log("before updating ds ",this.dataSource.data);
 
-         
-
-
           this.dataSource.data[indexToUpdate].operator_low = obj.operator_low;
           this.dataSource.data[indexToUpdate].operator_high = obj.operator_high;
-
-
-          
+         
           this.dataSource.data= Object.assign([], this.dataSource.data);
 
 
@@ -207,7 +196,6 @@ export class DisplayDataComponent implements OnInit {
     const dialogRef = this.dialog.open(CreateRecordComponent, 
       {
       width: '400px',
-      // panelClass: 'my-custom-dialog',
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -238,7 +226,6 @@ export class DisplayDataComponent implements OnInit {
   valid:boolean=false;
 
   test(element: any){
-  // let check= element.operator_low > element.operator_high || element.operator_low < element.optimized_value;
   let check= element.operator_low > element.operator_high;
 
   
@@ -249,7 +236,6 @@ export class DisplayDataComponent implements OnInit {
   validateInput(element:any)
   { 
 
-    // let check= (element.operator_low > element.operator_high || element.operator_low < element.optimized_value);
     let check= (element.operator_low > element.operator_high);
 
     this.inputcheck=!check;
