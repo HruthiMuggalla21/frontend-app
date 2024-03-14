@@ -77,12 +77,11 @@
             <div *ngSwitchCase="true">
 
             <div [ngSwitch]="element.use_in_optimization" >
-              <!-- <input type="number" *ngSwitchCase="true" class="edit-box"  matInput [value]="element.operator_low" 
-              [(ngModel)]="element.operator_low" placeholder=""  (input)="validateInput(element)" (keydown.backspace)="handleBackspace($event)"> -->
+              
               <input type="text" inputmode="numeric" pattern="[0-9.]" *ngSwitchCase="true" class="edit-box"  matInput [value]="element.operator_low" 
               [(ngModel)]="element.operator_low" placeholder=""  (input)="validateInput(element)"/>
 
-              <input type="number" [ngClass]="{'disabled-input':true}" *ngSwitchCase="false" [disabled]="true" class="edit-box"  matInput [value]="element.operator_low" 
+              <input type="text" [ngClass]="{'disabled-input':true}" *ngSwitchCase="false" [disabled]="true" class="edit-box"  matInput [value]="element.operator_low" 
               [(ngModel)]="element.operator_low" placeholder="" >
             </div>
             </div>
@@ -106,10 +105,10 @@
 
       <div *ngSwitchCase="true">
         <div [ngSwitch]="element.use_in_optimization" >
-          <input type="number" *ngSwitchCase="true" class="edit-box"  matInput [value]="element.operator_high" 
+          <input type="text" inputmode="numeric" pattern="[0-9.]"*ngSwitchCase="true" class="edit-box"  matInput [value]="element.operator_high" 
           [(ngModel)]="element.operator_high" placeholder="" (input)="validateInput(element)">
 
-          <input type="number" [ngClass]="{'disabled-input':true}" *ngSwitchCase="false" [disabled]="true" class="edit-box"  matInput [value]="element.operator_high" 
+          <input type="text" [ngClass]="{'disabled-input':true}" *ngSwitchCase="false" [disabled]="true" class="edit-box"  matInput [value]="element.operator_high" 
           [(ngModel)]="element.operator_high" placeholder="">
         </div>
         </div>
