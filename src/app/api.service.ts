@@ -21,9 +21,6 @@ export class ApiService {
     return this.http.post<Elements>(this.postUrl,rowData);
   }
 
-  editData(data: any[]): Observable<any> {
-    return this.http.put<any>(this.editUrl, data);
-  }
 
   updateColumn(arr:any): Observable<any> {
     return this.http.put(this.editUrl, arr);
