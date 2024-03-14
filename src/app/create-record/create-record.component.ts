@@ -36,13 +36,15 @@ export class CreateRecordComponent implements OnInit{
       unit: [''],
       use_in_optimization: [false],
       current_value: [null],
-      optimized_value: [null],
+      // optimized_value: [''],
+      optimized_value: ['', Validators.required],
 
       operator_low: ['', Validators.required],
       operator_high: ['', Validators.required],
 
       status: [false]
-    });
+    },{
+      validators:this.customValidator.bind(this)});
 
     
     }
@@ -59,6 +61,41 @@ export class CreateRecordComponent implements OnInit{
         return null;
       }
     }
+
+    customValidator(group: FormGroup) {
+      const operator_low = group.get('operator_low')?.value;
+      const operator_high = group.get('operator_high')?.value;
+      const optimized_value = group.get('optimized_value')?.value;
+
+      if (optimized_value!=null && (operator_low > optimized_value)) {
+        group.get('optimized_value')?.setErrors({ 'invalidRange': true });
+      } else {
+        group.get('optimized_value')?.setErrors(null);
+      }
+
+    if ( operator_low > operator_high) {
+      group.get('operator_high')?.setErrors({ 'invalidRange': true });
+    } else {
+      group.get('operator_high')?.setErrors(null);
+    }
+
+    // if (optimized_value!=null && (operator_low > optimized_value)) {
+    //   group.get('optimized_value')?.setErrors({ 'invalidRange': true });
+    // } else {
+    //   group.get('optimized_value')?.setErrors(null);
+    // }
+
+   
+      
+      if ( operator_high!=null && (optimized_value < operator_low || optimized_value > operator_high)) {
+        group.get('optimized_value')?.setErrors({ 'invalidRange': true });
+      } else {
+        group.get('optimized_value')?.setErrors(null);
+      }
+   
+      return null;
+    }
+  
 
     
     

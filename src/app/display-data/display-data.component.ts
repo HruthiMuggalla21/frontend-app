@@ -212,9 +212,7 @@ export class DisplayDataComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.dataSource.data.push(result);
-        this.dataSource.data= Object.assign([], this.dataSource.data);
-        
+       
         console.log('Data successfully added',result);
 
         this.dataSource.data.push(result);
@@ -240,7 +238,9 @@ export class DisplayDataComponent implements OnInit {
   valid:boolean=false;
 
   test(element: any){
+  // let check= element.operator_low > element.operator_high || element.operator_low < element.optimized_value;
   let check= element.operator_low > element.operator_high;
+
   
    return check;
    
@@ -249,7 +249,9 @@ export class DisplayDataComponent implements OnInit {
   validateInput(element:any)
   { 
 
+    // let check= (element.operator_low > element.operator_high || element.operator_low < element.optimized_value);
     let check= (element.operator_low > element.operator_high);
+
     this.inputcheck=!check;
      return this.inputcheck;
 
