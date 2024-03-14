@@ -44,14 +44,7 @@
 
                 <input matInput type="number" formControlName="operator_low" required/>
                 <mat-error  *ngIf="createForm.get('operator_low')?.hasError('required')">This field is required</mat-error>
-                <!-- <mat-error *ngIf="createForm?.hasError('rangeError')">Value should be less than operator high</mat-error> -->
                 <mat-error *ngIf="createForm.get('operator_low')?.hasError('invalidRange')"> invalidRange</mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="dialog-content" >
-                <mat-label>Optimized Value</mat-label>
-                <input matInput type="number" formControlName="optimized_value"/>
-                <!-- <mat-error *ngIf="createForm.get('optimized_value')?.hasError('invalidRange')">Should be greater than Operator Low</mat-error> -->
             </mat-form-field>
 
             <br/>
@@ -59,11 +52,16 @@
                 <mat-label>Operator High</mat-label>
                 <input matInput type="number" formControlName="operator_high" required/>
                 <mat-error  *ngIf="createForm.get('operator_high')?.hasError('required')">This field is required</mat-error>
-                <mat-error *ngIf="createForm.get('operator_high')?.hasError('invalidRange')">Should be greater than operator low</mat-error>
+                <mat-error *ngIf="createForm.get('operator_high')?.hasError('invalidRange') &&
+                 (createForm.get('operator_high')?.dirty && createForm.get('operator_high')?.touched)">Should be greater than operator low</mat-error>
 
-                
-                
             </mat-form-field>
+
+            <mat-form-field class="dialog-content" >
+                <mat-label>Optimized Value</mat-label>
+                <input matInput type="number" formControlName="optimized_value"/>
+                <mat-error *ngIf="createForm.get('optimized_value')?.hasError('invalidRange')">Should be greater than Operator Low</mat-error>
+                </mat-form-field>
             
 
             <br/>

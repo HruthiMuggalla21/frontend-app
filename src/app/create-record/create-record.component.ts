@@ -8,19 +8,16 @@ import { Elements } from '../elements';
 
 
 @Component({
-  // standalone:true,
   selector: 'app-create-record',
   templateUrl: './create-record.component.html',
   styleUrls: ['./create-record.component.css'],
   providers:[ApiService],
-  // imports:[]
 })
 
 
 
 export class CreateRecordComponent implements OnInit{
   
-  // data: any;
   createForm: FormGroup;
    
 
@@ -36,8 +33,8 @@ export class CreateRecordComponent implements OnInit{
       unit: [''],
       use_in_optimization: [false],
       current_value: [null],
-      optimized_value: [''],
-      // optimized_value: ['', Validators.required],
+
+      optimized_value: ['',Validators.required],
 
       operator_low: ['', Validators.required],
       operator_high: ['', Validators.required],
@@ -65,56 +62,27 @@ export class CreateRecordComponent implements OnInit{
     customValidator(group: FormGroup) {
       const operator_low = group.get('operator_low')?.value;
       const operator_high = group.get('operator_high')?.value;
-      // const optimized_value = group.get('optimized_value')?.value;
 
-      // if (optimized_value!=null && (operator_low > optimized_value)) {
-      //   group.get('optimized_value')?.setErrors({ 'invalidRange': true });
-      // } else {
-      //   group.get('optimized_value')?.setErrors(null);
-      // }
+      
+      const optimized_value = group.get('optimized_value')?.value;
 
-    if ( operator_low > operator_high) {
-      group.get('operator_high')?.setErrors({ 'invalidRange': true });
-    } else {
-      group.get('operator_high')?.setErrors(null);
-    }
-
-    // if (optimized_value!=null && (operator_low > optimized_value)) {
-    //   group.get('optimized_value')?.setErrors({ 'invalidRange': true });
-    // } else {
-    //   group.get('optimized_value')?.setErrors(null);
-    // }
-
+      if ( operator_low > operator_high) {
+        group.get('operator_high')?.setErrors({ 'invalidRange': true });
+      }else {
+        group.get('operator_high')?.setErrors(null);
+      }
    
       
-      // if ( operator_high!=null && (optimized_value < operator_low || optimized_value > operator_high)) {
-      //   group.get('optimized_value')?.setErrors({ 'invalidRange': true });
-      // } else {
-      //   group.get('optimized_value')?.setErrors(null);
-      // }
+      if ( operator_high!=null && operator_low!=null && (optimized_value < operator_low || optimized_value > operator_high)) {
+        group.get('optimized_value')?.setErrors({ 'invalidRange': true });
+      } else {
+        group.get('optimized_value')?.setErrors(null);
+      }
+
    
       return null;
     }
   
-
-    
-    
-    // rangeValidator(group: FormGroup): { [key: string]: boolean } | null {
-      // rangeValidator(): ValidatorFn {
-      //   return (control: AbstractControl): { [key: string]: any } | null => {
-      //     const operatorLow = this.createForm.get('operator_low')?.value;
-      //     const operatorHigh = this.createForm.get('operator_high')?.value;
-          
-      //     if (operatorLow !== undefined && operatorHigh !== undefined && operatorLow > operatorHigh) {
-      //       return { rangeError: true };
-      //     } 
-      //     else {
-      //       return null;
-      //     };
-      //   };
-      // }
-
-
   ngOnInit():void{
     
   }
