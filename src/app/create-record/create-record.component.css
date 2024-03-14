@@ -34,7 +34,11 @@ input::-webkit-inner-spin-button {
 
 .slider-toggle {
     .mdc-switch:enabled .mdc-switch__track::after{
-        background:green;
+        background:#02A783;
+    }
+
+    .mat-mdc-slide-toggle.mat-accent {
+        --mdc-switch-selected-hover-track-color: #02A783;
     }
     .mdc-switch.mdc-switch--selected:enabled .mdc-switch__icon, .mdc-switch.mdc-switch--unselected:enabled .mdc-switch__icon{
         fill: none;

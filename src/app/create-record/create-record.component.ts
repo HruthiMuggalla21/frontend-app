@@ -33,7 +33,9 @@ export class CreateRecordComponent implements OnInit{
       unit: [''],
       use_in_optimization: [false],
       current_value: [null],
+
       optimized_value: ['',Validators.required],
+
       operator_low: ['', Validators.required],
       operator_high: ['', Validators.required],
 
@@ -61,6 +63,7 @@ export class CreateRecordComponent implements OnInit{
       const operator_low = group.get('operator_low')?.value;
       const operator_high = group.get('operator_high')?.value;
 
+      
       const optimized_value = group.get('optimized_value')?.value;
 
       if ( operator_low > operator_high) {
@@ -75,6 +78,7 @@ export class CreateRecordComponent implements OnInit{
       } else {
         group.get('optimized_value')?.setErrors(null);
       }
+
    
       return null;
     }
