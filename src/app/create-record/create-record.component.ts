@@ -73,9 +73,14 @@ export class CreateRecordComponent implements OnInit{
       }
    
       
-      if ( operator_high!=null && operator_low!=null && (optimized_value < operator_low || optimized_value > operator_high)) {
+      // if ( operator_high!=null && operator_low!=null && (optimized_value < operator_low || optimized_value > operator_high)) {
+        if ( operator_high!=null && operator_low!=null && (optimized_value < operator_low)) {
         group.get('optimized_value')?.setErrors({ 'invalidRange': true });
-      } else {
+      } else if(operator_high!=null && operator_low!=null && (optimized_value > operator_high)) {
+        group.get('optimized_value')?.setErrors({ 'falsy_value': true });
+
+        // group.get('optimized_value')?.setErrors(null);
+      }else{
         group.get('optimized_value')?.setErrors(null);
       }
 

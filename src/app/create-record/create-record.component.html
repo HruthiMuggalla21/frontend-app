@@ -61,6 +61,8 @@
                 <mat-label>Optimized Value</mat-label>
                 <input matInput type="number" formControlName="optimized_value"/>
                 <mat-error *ngIf="createForm.get('optimized_value')?.hasError('invalidRange')">Should be greater than Operator Low</mat-error>
+                <mat-error *ngIf="createForm.get('optimized_value')?.hasError('falsy_value')">Should be less than Operator High</mat-error>
+
                 </mat-form-field>
             
 
